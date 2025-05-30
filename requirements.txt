@@ -1,0 +1,14 @@
+pymc
+numpy
+scikit-learn
+pandas
+numpy
+scipy
+statsmodels
+matplotlib
+plotly
+kagglehub
+jupyter
+ipython
+dotenv
+pyyaml
