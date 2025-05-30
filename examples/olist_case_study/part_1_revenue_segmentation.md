@@ -20,7 +20,7 @@ The implementation of revenue segmentation is based on the recipe described in t
 
 ## Code Details
 1. The code for the data preparation and analysis is available in [data_prep_olist.ipy](https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/data_prep_olist.ipynb).
-2. The code for the descriptive analytics is available in [customer_product_segmentation.ipynb]((https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/customer_product_segmentation.ipynb).
+2. The code for the descriptive analytics is available in [customer_product_segmentation.ipynb](https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/customer_product_segmentation.ipynb).
 
 ## Next Steps
 Understand revenue segmentation by geography and time periods. This will help in understanding how revenue is distributed across different regions and time periods, which can provide insights into customer behavior and product demand patterns.
