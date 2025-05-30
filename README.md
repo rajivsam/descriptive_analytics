@@ -61,7 +61,7 @@ descriptive_analytics/
 
 3. **Explore the conceptual documents and examples:**
    - Read the concept discussions in the `concept_discussion/` directory.
-   - Open Jupyter notebooks in the `notebooks/` directory to follow along with the recipes.
+   - Pick a case study from the `examples/` directory to follow the implementation sketch.
 
 ---
 
