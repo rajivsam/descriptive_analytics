@@ -66,12 +66,7 @@ descriptive_analytics/
 ---
 
 ## 📚 Recipes & Examples
-
-- 📦 **Data Preparation:** Handling missing values, outlier detection, feature engineering.
-- 📊 **Exploratory Data Analysis:** Summary statistics, correlation analysis, distribution plots.
-- 🧩 **Segmentation:** Customer grouping, cohort analysis.
-- 📈 **Visualization:** Bar charts, heatmaps, dashboards with Matplotlib & Seaborn.
-- 📝 **Interpretation:** Reporting findings and actionable insights.
+The recipes and examples are created to emphasize a systematic approach to preparing and analyzing operational data. The concepts folder contains the relevant notes that are referenced in the case study discussions.
 
 ---
 
