@@ -59,8 +59,9 @@ descriptive_analytics/
      pip install -r requirements.txt
      ```
 
-3. **Explore the notebooks:**
-     - Open the `notebooks/` folder and start with `01_data_preparation.ipynb`.
+3. **Explore the conceptual documents and examples:**
+   - Read the concept discussions in the `concept_discussion/` directory.
+   - Open Jupyter notebooks in the `notebooks/` directory to follow along with the recipes.
 
 ---
 
