@@ -21,7 +21,7 @@ The implementation of revenue segmentation is based on the recipe described in t
     2. Repeat product purchases also follow a Zipf distribution, indicating that a small number of products contribute significantly to the revenue.
    ![product repeat purchases](../../images/zipf_prod.png)
     3. Repeat product purchases contribute more to the revenue than repeat customer visits. So managing inventory and product availability is crucial for maximizing revenue (need to avoid stockouts).
-   ![summary of revenue contribution](../../images/perf_summary_seg_cust_prod.png)
+   ![summary of revenue contribution][https://github.com/rajivsam/descriptive_analytics/blob/main/images/perf_summary_seg_cust_prod.png]
 
 
 
@@ -32,3 +32,6 @@ The implementation of revenue segmentation is based on the recipe described in t
 ## Next Steps
 Understand revenue segmentation by geography and time periods. This will help in understanding how revenue is distributed across different regions and time periods, which can provide insights into customer behavior and product demand patterns.
 
+
+
+[def]: ../../images/perf_summary_seg_cust_prod.png
