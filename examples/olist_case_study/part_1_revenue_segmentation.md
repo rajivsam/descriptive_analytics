@@ -30,7 +30,9 @@ The approach to analysis is based on [this approach document](https://github.com
 2. The code for the descriptive analytics is available in [customer_product_segmentation.ipynb](https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/customer_product_segmentation.ipynb).
 
 ## Next Steps
-Understand revenue segmentation by geography and time periods. This will help in understanding how revenue is distributed across different regions and time periods, which can provide insights into customer behavior and product demand patterns.
+Understand revenue segmentation by geography and time periods. This will help in understanding how revenue is distributed across different regions and time periods, which can provide insights into customer behavior and product demand patterns. 
+
+*note*: The geographic segmentation sketch is available in [part_2_revenue_seg_by_geography.md](part_2_revenue_seg_by_geography.md).
 
 
 
