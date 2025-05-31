@@ -20,7 +20,7 @@ The approach is again based on the recipe described in the [concept discussion f
   Orders and customers are concentrated in a few states, indicating that these regions are key markets for Olist. Sao Paulo (SA) seems to be the most significant contributor.
 
 6. Code Details:
-   - The code for the data preparation and analysis is available in [geographic_seg_prep.ipynb]([../notebooks/geographic_seg_prep.ipynb](https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/geographic_seg_prep.ipynb)).
+   - The code for the data preparation and analysis is available in [geographic_seg_prep.ipynb]([../notebooks/geographic_seg_prep.ipynb](https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/geographic_seg_prep.ipynb).
    - The code for the descriptive analytics is available in [geo_seg_plots.ipynb](https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/geo_seg_plots.ipynb).
 
 ## Next Steps
