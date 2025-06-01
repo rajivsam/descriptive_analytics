@@ -27,3 +27,6 @@ The approach is again based on the recipe described in the [concept discussion f
 
 ## Next Steps
 Given that we know there are three states SP, MG and RJ, is where most of orders come from and that we have a full good set of data for 2017 and some good data for 2018, we can do a more detailed analysis of the revenue distribution across these states in terms of product categories. We can create two product category segments, one for the frequent categories and one for the infrequent categories. The frequent categories are those that have a high number of orders and a high revenue, while the infrequent categories are those that have a low number of orders and a low revenue. This will allow us to understand how the revenue is distributed across different product categories and how it changes over time in each of the states.
+
+*note* 
+Please see the [summary of the revenue analysis](summary_revenue_analysis.md) for a summary of the revenue analysis performed on the Olist dataset. The summary includes the key findings from the analysis and the next steps for further analysis.
