@@ -1,4 +1,4 @@
-## Summary of the Approach to Analysis
+## Summary of the Approach to Revenue Analysis
 
 The analysis of the Olist case study was conducted as follows:
 1. Understand what drives revenue to the store:
