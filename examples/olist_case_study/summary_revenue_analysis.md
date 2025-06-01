@@ -17,7 +17,8 @@
    - SP is the largest state in terms of revenue contribution, followed by RJ and MG.
 4. Understanding product purchase patterns:
    - We can categorize products into two categories: frequently purchased and rarely purchased.
-   - We can aggregate data by week for different product categories to see how they perform over time. This can be done for the year 2017. We can use the partial data for 2018 to see if there are any trends that continue into the next year - check for generalizable patterns.
+   - We can aggregate data by week for the frequent category to see how they perform over time. This can be done for the year 2017. We can use the partial data for 2018 to see if there are any trends that continue into the next year - check for generalizable patterns.
+   - If necessary, we can also aggregate data by week for the rarely purchased category to see how they perform over time. This can be done for the year 2017. We can use the partial data for 2018 to see if there are any trends that continue into the next year - check for generalizable patterns. This step may be necessary for example some of the rarely purchased items may be seasonal items that are only purchased during certain times of the year. Like gifts during the holiday season. We can limit the time period to the holiday season in December and see how these items perform during that time.
    - We can also aggregate city data for different product categories to see how they perform across different regions. This can be done for the year 2017. We can use the partial data for 2018 to see if there are any trends that continue into the next year - check for generalizable patterns.
 
 Understanding product purchase patterns is crucial for identifying customer preferences and optimizing inventory management. This should be the next step in the analysis.
