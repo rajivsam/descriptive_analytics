@@ -22,7 +22,7 @@ The approach is again based on the recipe described in the [concept discussion f
   ![weekly revenue KDE](../../images/kde_2017_weekly_rev.png)
 
 ## Code
-   - The code for the data preparation and analysis is available in [temporal_data_prep.ipynb](https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/temporal_data_prep.ipynb.
+   - The code for the data preparation and analysis is available in [temporal_data_prep.ipynb](https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/temporal_data_prep.ipynb).
    - The code for the descriptive analytics is available in [temporal_seg_plots.ipynb](https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/temporal_seg_plots.ipynb).
 
 ## Next Steps
