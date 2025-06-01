@@ -25,3 +25,5 @@ The approach is again based on the recipe described in the [concept discussion f
 
 ## Next Steps
 Complete segmentation by time periods. This will help in understanding how revenue is distributed across different time periods, which can provide insights into seasonal trends and customer purchasing behavior over time.
+
+*note* the temporal segmentation analysis is available in [part_3_revenue_seg_by_time_period.md](part_3_revenue_seg_by_time_period.md).
