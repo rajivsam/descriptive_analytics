@@ -66,7 +66,9 @@ The weekly revenue for the clusters is shown in the violin plot below.
 ### Ok, how about summarizing the frequent items ordered, there are nearly 3k inventory items that are ordered frequently. Can these be summarized?
 
 Yes we do this by applying Non-negative Matrix Factorization (NMF) to the weekly orders in SP. NMF is a dimensionality reduction technique that can be used to summarize the data into a smaller number of components. It turns out that the weekly orders in SP can be summarized into 2 components that are separable. This means that are inventory items that are unique to each component. [This talk](https://www.youtube.com/watch?v=O8YDAMjIzYs&t=1443s) explains the separable ideal very well. For the more motivated, [Ankur Moitra's talk](https://www.youtube.com/watch?v=kSfwY68gQ9I&t=1647s) explores this further. In matrix factorization terms, these items are called "anchor items". The two components are sufficient to explain 90% of the variance in weekly orders in SP. There are 34 unique inventory items in the first component and 104 unique inventory items in the second component. The item descreptions are in Portugese.
-![NMF component 1 sample](../../images/nmf_cs_comp1.png) ![NMF component 2 sample](../../images/nmf_cs_comp2.png)
+
+<img src="../../images/nmf_cs_comp1.png" width="425"/>  <img src="../../images/nmf_cs_comp2.png" width="425"/> 
+
 
 Now each week can be succintly described by just two components (instead of nearly 3 K components). Each component has a unique signature profile.
 
@@ -80,8 +82,9 @@ Well, this is an analysis choice. It is a choice using which you can pivot your 
 In the temporal segmentation of weekly inventory items, we connect two weeks if their cosine similarity is greater than 0.1. This threshold requires analysis and tuning. Alternatively, you can pick a set of nearest neighbors for each point in your dataset. So this will segment your similarity graph into connected components. The connected components will be the weeks that are similar to each other. An example of this is illustated in the geographical segmentation of the weekly inventory items. The idea can be extended to temporal view also. Each connected component will be a sub-problem that can be analyzed separately. You typically want to analyze some signal on the sub-graphs, such as the number of orders, the revenue, or the number of unique items ordered. 
 
 **code**:
-[knn_graph_prep.ipynb](../../notebooks/knn_graph_prep.ipynb)
-[geo_cs_analysis_prod_purch_2017.ipynb](../../notebooks/geo_cs_analysis_prod_purch_2017.ipynb)
+1. [knn_graph_prep.ipynb](../../notebooks/knn_graph_prep.ipynb)
+
+2. [geo_cs_analysis_prod_purch_2017.ipynb](../../notebooks/geo_cs_analysis_prod_purch_2017.ipynb)
 
 ### How was the ordering behavior in SP across different cities in the year 2017?
 Just a quick description of the way this segmentation was done. In contrast to aggregating the weekly orders, we are looking at the orders in each city in SP. On a side note, this aggregation of a raw transaction dataset with respect to a small number of attributes is a common pattern in data analysis. 
