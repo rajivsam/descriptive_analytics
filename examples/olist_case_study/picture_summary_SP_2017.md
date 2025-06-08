@@ -1,5 +1,7 @@
 # The Olist Dataset: Picture Summary for the Sau Paulo Region (SP) in 2017
 
+![Shopping in Sau Paulo](../../images/shopping_in_SP.png)
+
 
 ### Why Sau Paulo (SP)?
 ![sales_by_state](../../images/pct_orders_by_state.png)
