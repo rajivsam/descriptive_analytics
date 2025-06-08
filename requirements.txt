@@ -14,3 +14,5 @@ dotenv
 pyyaml
 hdbscan
 pyarrow
+networkx
+nimfa
