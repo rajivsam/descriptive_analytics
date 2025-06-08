@@ -1,13 +1,12 @@
 # The Olist Dataset: Picture Summary for the Sau Paulo Region (SP) in 2017
 
-# This document provides a summary of the Olist dataset, focusing on the Sau Paulo (SP) region in 2017. It includes key statistics and visualizations to help understand the data distribution and customer behavior in this region.
 
 ### Why Sau Paulo (SP)?
 ![sales_by_state](../../images/pct_orders_by_state.png)
 When we look at the distribution of Olist orders by state, we see that Sau Paulo (SP) accounts for a significant portion of the total orders. This makes it a key region for analysis. RJ and MG follow, but SP stands out with a substantial lead in the number of orders.
 
 **code**:
-![customer_product_segmentation.ipynb](../../notebooks/customer_product_segmentation.ipynb)
+[customer_product_segmentation.ipynb](../../notebooks/customer_product_segmentation.ipynb)
 
 ### Why 2017?
 2017 is the year where we have the most complete data available. We have data for the later part of 2016 but it is missing 10 weeks of data. We have data that is continuous for 2018, but it is for part of the year only. Therefore, 2017 is the best choice for a complete analysis of customer behavior and sales trends.
@@ -34,7 +33,7 @@ When we exmanined what drives revenue to the store, we found that frequent purch
 ![contribution of frequent purchases to revenue](../../images/contrib_freq_inventory_revenue.png)
 
 **code**:
-![customer_product_segmentation.ipynb](../../notebooks/customer_product_segmentation.ipynb)
+[customer_product_segmentation.ipynb](../../notebooks/customer_product_segmentation.ipynb)
 
 
 ### What is a frequently purchased item and what portion of the inventory is it?
@@ -43,7 +42,7 @@ A frequently purchased item is one that was purchased 10 or more times in the pe
 ![percentage of inventory that is frequently purchased](../../images/pct_of_inventory_freq_items.png)
 
 **code**:
-![customer_product_segmentation.ipynb](../../notebooks/customer_product_segmentation.ipynb)
+[customer_product_segmentation.ipynb](../../notebooks/customer_product_segmentation.ipynb)
 
 ### Why are we not looking at frequent customers?
 Because frequent customers, those who have made 5 or more purchases at the store contribute a very small portion of the revenue in contrast to frequently purchased items.
