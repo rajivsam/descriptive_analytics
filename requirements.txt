@@ -15,4 +15,4 @@ pyyaml
 hdbscan
 pyarrow
 networkx
-nimfa
+geopy
