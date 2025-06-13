@@ -21,7 +21,8 @@ This repository contains recipes illustrating the use of descriptive statistical
 
 ## 🔍 Overview
 
-his repository contains recipes to describe datasets with the following elements:
+
+This repository contains recipes to describe datasets with the following elements:
 1. The raw data is operational and has a timestamp capturing the interaction activity of interest. Examples could be transactional data, data from your health/fitness application, your blood glucose monitor.
 2. Your use case needs to analyze specific metrics across a time period. This time period is present in the raw dataset.
 3. You apply an aggregation and or a pivoting operation to compute the metric of interest for the time period
