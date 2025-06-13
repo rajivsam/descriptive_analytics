@@ -1,4 +1,5 @@
 # The Olist Dataset: Picture Summary for the Sau Paulo Region (SP) in 2017
+This post is an initial iteration demonstrating the utility of taking the time to develop a descriptive profile of your dataset prior to embarking on predictive tasks on the same dataset. This post uses a dataset that has applications to both retail and supply chain. It has transaction data that covers multiple geographic regions and a two year period. It has data quality issues, but with analysis it is possible to isolate a chunk of data that can yield insights into purchasing behavior. Most importantly, performing a descriptive analysis such as this, maps your problem into simpler canonical problems - problems that we know how to solve well. 
 
 ![Shopping in Sau Paulo](../../images/shopping_in_SP.png)
 
