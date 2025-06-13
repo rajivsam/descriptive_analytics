@@ -112,6 +112,8 @@ A subgraph of size 26 is shown below
 
 [geo_cs_analysis_prod_purch_2017.ipynb](../../notebooks/geo_cs_analysis_prod_purch_2017.ipynb)
 
+**NOTE**: Visualization of the geographic segmentation is quite elaborate and will be posted as an addendum shortly. The above points should make it evident that there are clear geographic patterns. Graphs can be used to analyze the geographic segments that have similar purchases. Conventional ML methods can be used to study the segments where the IID assumption is reasonable.
+
 ### Are we done with analyzing the Olist dataset?
 No, to get the full picture, you need to repeat the analysis for:
 1. RJ
@@ -119,6 +121,7 @@ No, to get the full picture, you need to repeat the analysis for:
 3. A combined set of all other states, because after the top 3 states, the data is very thinly spread across the other states. It makes more sense to just bucket these together.
 
 The analysis should be similar to what was done for SP. To get the full picture, we combine the results from these analyses. 
+
 
 ### Concluding thoughts
 
