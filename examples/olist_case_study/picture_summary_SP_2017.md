@@ -73,11 +73,7 @@ We achieve this by applying Non-negative Matrix Factorization (NMF) to the weekl
 <img src="../../images/nmf_cs_comp1.png" width="425"/>  <img src="../../images/nmf_cs_comp2.png" width="425"/> 
 
 
-Now each week can be succintly described by just two components (instead of nearly 3 K components). Each component has a unique signature profile.
-
-
-
-In fact, the NMF solution gives us clear clusters of purchasing tendencies. We have a large cluster, which corresponds to a long temporal period where there are purchases of inventory items belonging to both components. Two small cluster/temporal periods where we have purchases belonging to component 1 and a small cluster/temporal period where we have purchases belonging to component 2.
+Now each week can be succintly described by just two components (instead of nearly 3 K components). In fact, the NMF solution gives us clear clusters of purchasing tendencies. We have a large cluster, which corresponds to a long temporal period where there are purchases of inventory items belonging to both components. Two small cluster/temporal periods where we have purchases belonging to component 1 and a small cluster/temporal period where we have purchases belonging to component 2.
 
 ![Temporal Patterns in Purchases, 2017](../../images/cs_2017_temporal_clusters_weekly_rev.png)
 
