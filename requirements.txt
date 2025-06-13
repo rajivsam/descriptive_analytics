@@ -16,3 +16,4 @@ hdbscan
 pyarrow
 networkx
 geopy
+geopandas[all]

@@ -1,13 +1,14 @@
 # 📊 Descriptive Analytics Recipes
 
 Welcome to the **Descriptive Analytics Recipes** repository!  
-This workspace offers a curated collection of recipes, concepts, and hands-on examples for performing descriptive analytics with Python. Whether you're an analyst, data scientist, or student, you'll find practical guidance to prepare, analyze, and interpret operational data efficiently.
 
+This repository contains recipes illustrating the use of descriptive statistical methods and machine learning methods to describe facets of your dataset that are relevant to main machine learning task. For example, if your data contains multiple populations, a descriptive task will capture this information. This informs how you want to build machine learning models for this data. In other words, if there is structure in the data that is relevant to your principal machine learning tasks, you need a process component to capture and profile this. This is what descriptive analytics aims to do.xs
 ---
 
 ## 🗂️ Table of Contents
 
 - [📊 Descriptive Analytics Recipes](#-descriptive-analytics-recipes)
+  - [This repository contains recipes illustrating the use of descriptive statistical methods and machine learning methods to describe facets of your dataset that are relevant to main machine learning task. For example, if your data contains multiple populations, a descriptive task will capture this information. This informs how you want to build machine learning models for this data. In other words, if there is structure in the data that is relevant to your principal machine learning tasks, you need a process component to capture and profile this. This is what descriptive analytics aims to do.xs](#this-repository-contains-recipes-illustrating-the-use-of-descriptive-statistical-methods-and-machine-learning-methods-to-describe-facets-of-your-dataset-that-are-relevant-to-main-machine-learning-task-for-example-if-your-data-contains-multiple-populations-a-descriptive-task-will-capture-this-information-this-informs-how-you-want-to-build-machine-learning-models-for-this-data-in-other-words-if-there-is-structure-in-the-data-that-is-relevant-to-your-principal-machine-learning-tasks-you-need-a-process-component-to-capture-and-profile-this-this-is-what-descriptive-analytics-aims-to-doxs)
   - [🗂️ Table of Contents](#️-table-of-contents)
   - [🔍 Overview](#-overview)
   - [📁 Directory Structure](#-directory-structure)
@@ -20,13 +21,12 @@ This workspace offers a curated collection of recipes, concepts, and hands-on ex
 
 ## 🔍 Overview
 
-Descriptive analytics focuses on summarizing historical data to uncover patterns, trends, and actionable insights.  
-This repository guides you through the end-to-end workflow, including:
-
-- **Data Preparation:** Cleaning, transforming, and structuring data.
-- **Segmentation:** Grouping data for deeper analysis.
-- **Visualization:** Creating charts and dashboards.
-- **Interpretation:** Drawing meaningful conclusions.
+his repository contains recipes to describe datasets with the following elements:
+1. The raw data is operational and has a timestamp capturing the interaction activity of interest. Examples could be transactional data, data from your health/fitness application, your blood glucose monitor.
+2. Your use case needs to analyze specific metrics across a time period. This time period is present in the raw dataset.
+3. You apply an aggregation and or a pivoting operation to compute the metric of interest for the time period
+4. You analyze the cleaned and prepared data for the time period using descriptive analytics techniques.
+5. An example is provided using ecommerce data. 
 
 Real-world datasets, such as the Olist e-commerce dataset, are used to demonstrate each step.
 
@@ -38,7 +38,7 @@ Real-world datasets, such as the Olist e-commerce dataset, are used to demonstra
 descriptive_analytics/
 ├── data/               # Sample datasets
 ├── notebooks/          # Jupyter notebooks with recipes & walkthroughs
-├── scripts/            # Python scripts for automation
+├── examples/           # examples illustrating descriptive analytics
 ├── images/             # Visualizations & diagrams
 ├── README.md           # Project documentation
 └── requirements.txt    # Python dependencies
