@@ -1,14 +1,13 @@
 # 📊 Descriptive Analytics Recipes
 
 Welcome to the **Descriptive Analytics Recipes** repository!  
-
-This repository contains recipes illustrating the use of descriptive statistical methods and machine learning methods to describe facets of your dataset that are relevant to main machine learning task. For example, if your data contains multiple populations, a descriptive task will capture this information. This informs how you want to build machine learning models for this data. In other words, if there is structure in the data that is relevant to your principal machine learning tasks, you need a process component to capture and profile this. This is what descriptive analytics aims to do.xs
 ---
+This repository contains recipes illustrating the use of descriptive statistical methods and machine learning methods to describe facets of your dataset that are relevant to main machine learning task. For example, if your data contains multiple populations, a descriptive task will capture this information. This informs how you want to build machine learning models for this data. In other words, if there is structure in the data that is relevant to your principal machine learning tasks, you need a process component to capture and profile this. This is what descriptive analytics aims to do.xs
 
 ## 🗂️ Table of Contents
 
 - [📊 Descriptive Analytics Recipes](#-descriptive-analytics-recipes)
-  - [This repository contains recipes illustrating the use of descriptive statistical methods and machine learning methods to describe facets of your dataset that are relevant to main machine learning task. For example, if your data contains multiple populations, a descriptive task will capture this information. This informs how you want to build machine learning models for this data. In other words, if there is structure in the data that is relevant to your principal machine learning tasks, you need a process component to capture and profile this. This is what descriptive analytics aims to do.xs](#this-repository-contains-recipes-illustrating-the-use-of-descriptive-statistical-methods-and-machine-learning-methods-to-describe-facets-of-your-dataset-that-are-relevant-to-main-machine-learning-task-for-example-if-your-data-contains-multiple-populations-a-descriptive-task-will-capture-this-information-this-informs-how-you-want-to-build-machine-learning-models-for-this-data-in-other-words-if-there-is-structure-in-the-data-that-is-relevant-to-your-principal-machine-learning-tasks-you-need-a-process-component-to-capture-and-profile-this-this-is-what-descriptive-analytics-aims-to-doxs)
+  - [Welcome to the **Descriptive Analytics Recipes** repository!](#welcome-to-the-descriptive-analytics-recipes-repository)
   - [🗂️ Table of Contents](#️-table-of-contents)
   - [🔍 Overview](#-overview)
   - [📁 Directory Structure](#-directory-structure)
