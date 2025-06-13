@@ -119,7 +119,7 @@ The analysis should be similar to what was done for SP. To get the full picture,
 
 ### Concluding thoughts
 
-Hopefully, this convinces you that, performing a descriptive analytics task like the above on this dataset is useful because it gives you information about how your problem is structured. The connected components of the similarity sub-graph does this for us. Personally, I prefer doing an analysis like this prior to a related task like forecasting revenue or understanding revenue through a graph regression model.
+ We analyzed the revenue for 2017 based on a temporal aggregation and geographical aggregation. We used the Cosine similarity to identify similar purchasing behavior. This segmented the major market into two sub-problems. One problem can be analyzed with Graph methods, the other, the IID data, can be analyzed with conventional machine learning methods. A descriptive analysis task simplified our analysis for us. Hopefully, this convinces you that, performing a descriptive analytics task like the above on this dataset is useful because it gives you information about how your problem is structured.
 
 
 
