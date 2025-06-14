@@ -109,11 +109,21 @@ A subgraph of size 26 is shown below
 
 ![subgraph of size 26](../../images/size_26_sub_graph_SP_cities.png)
 
+In the following cities, the purchase behavior may be treated as IID.
+![IID purchase behavior in SP](../../images/purch_behavior_SP_IID.png)
+
+
+In the following cities the purchase behavior is connected and should be treated as a graph.
+![Connected purchase behavior in SP](../../images/purch_behavior_SP_conn.png)
+
+
+
 **code**:
 
 [geo_cs_analysis_prod_purch_2017.ipynb](../../notebooks/geo_cs_analysis_prod_purch_2017.ipynb)
 
 **NOTE**: Visualization of the geographic segmentation is quite elaborate and will be posted as an addendum shortly. The above points should make it evident that there are clear geographic patterns. Graphs can be used to analyze the geographic segments that have similar purchases. Conventional ML methods can be used to study the segments where the IID assumption is reasonable.
+
 
 ### Are we done with analyzing the Olist dataset?
 No, to get the full picture, you need to repeat the analysis for:

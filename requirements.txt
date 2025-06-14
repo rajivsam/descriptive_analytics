@@ -17,3 +17,5 @@ pyarrow
 networkx
 geopy
 geopandas[all]
+geodatasets
+geobr

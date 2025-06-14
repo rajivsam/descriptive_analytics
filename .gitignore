@@ -8,3 +8,4 @@ __pycache__/
 .DS_Store
 # Ignore directories that have raw in the name in the data directory
 data/olist_raw/
+data/sba_loans_data_raw/
