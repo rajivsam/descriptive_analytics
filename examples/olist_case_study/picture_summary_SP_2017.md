@@ -125,7 +125,12 @@ In the following cities the purchase behavior is connected and should be treated
 2. [geo_datat_analysis_connected.ipynb](../../notebooks/geo_data_analysis_connected.ipynb)
 
 
-**NOTE**: Visualization of the geographic segmentation is quite elaborate and will be posted as an addendum shortly. The above points should make it evident that there are clear geographic patterns. Graphs can be used to analyze the geographic segments that have similar purchases. Conventional ML methods can be used to study the segments where the IID assumption is reasonable.
+**NOTE**: Visualization of the geographic segmentation is quite elaborate and will be posted as an addendum shortly. The above points should make it evident that there are clear geographic patterns. Graphs can be used to analyze the geographic segments that have similar purchases. Some canonical graph problems of interest are:
+1. Identify the k-cliques within a graph. This is interesting because it identifies subgroups of similar taste/habbits.
+2. Identify centrality measures in a graph. This is interesting to a manager responsible for a geographic region because it identifies the cities that he/she should be monitoring closely.
+
+
+Conventional ML methods can be used to study the segments where the IID assumption is reasonable. 
 
 
 ### Are we done with analyzing the Olist dataset?
@@ -134,7 +139,7 @@ No, to get the full picture, you need to repeat the analysis for:
 2. MG
 3. A combined set of all other states, because after the top 3 states, the data is very thinly spread across the other states. It makes more sense to just bucket these together.
 
-The analysis should be similar to what was done for SP. To get the full picture, we combine the results from these analyses. 
+The analysis should be similar to what was done for SP. To get the full picture, we combine the results from these analyses. For student's who want to develop skills in data science, this should be a good exercise. There is an existing template, you just need to repeat the steps for the new geographic regions.
 
 
 ### Concluding thoughts
