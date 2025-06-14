@@ -120,7 +120,10 @@ In the following cities the purchase behavior is connected and should be treated
 
 **code**:
 
-[geo_cs_analysis_prod_purch_2017.ipynb](../../notebooks/geo_cs_analysis_prod_purch_2017.ipynb)
+1. [geo_cs_analysis_prod_purch_2017.ipynb](../../notebooks/geo_cs_analysis_prod_purch_2017.ipynb)
+2. [geo_data_analysis_IID.ipynb](../../notebooks/geo_data_analysis_IID.ipynb)
+2. [geo_datat_analysis_connected.ipynb](../../notebooks/geo_data_analysis_connected.ipynb)
+
 
 **NOTE**: Visualization of the geographic segmentation is quite elaborate and will be posted as an addendum shortly. The above points should make it evident that there are clear geographic patterns. Graphs can be used to analyze the geographic segments that have similar purchases. Conventional ML methods can be used to study the segments where the IID assumption is reasonable.
 
