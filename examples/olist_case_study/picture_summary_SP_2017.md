@@ -114,7 +114,7 @@ In the following cities, the purchase behavior may be treated as IID.
 
 
 In the following cities the purchase behavior is connected and should be treated as a graph.
-![Connected purchase behavior in SP](../../images/purch_behavior_SP_conn.png)
+![Connected purchase behavior in SP](../../images/purch_behavior_SP_connected.png)
 
 
 
