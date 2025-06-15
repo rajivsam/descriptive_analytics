@@ -2,7 +2,8 @@
 
 Welcome to the **Descriptive Analytics Recipes** repository!  
 ---
-This repository contains recipes illustrating the use of descriptive statistical methods and machine learning methods to describe facets of your dataset that are relevant to main machine learning task. For example, if your data contains multiple populations, a descriptive task will capture this information. This informs how you want to build machine learning models for this data. In other words, if there is structure in the data that is relevant to your principal machine learning tasks, you need a process component to capture and profile this. This is what descriptive analytics aims to do.xs
+This repository is dedicated to providing practical recipes and examples for performing descriptive analytics on operational datasets. It aims to help users understand their data better, identify patterns, and prepare for further analysis or modeling. Most of the recipes are designed to be accessible to both business managers and data scientists, ensuring that everyone can benefit from the insights derived from operational data. Most businesses do not have data on the scale of large enterprises. They do have operational data that can be analyzed and applied to improve business efficiency and decision-making. This repository provides a systematic approach to analyzing such data, focusing on profiling metrics before monitoring them, addressing the curse of dimensionality, and summarizing datasets for better human interpretation.
+
 
 ## 🗂️ Table of Contents
 
