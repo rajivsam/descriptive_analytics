@@ -20,7 +20,7 @@ When we look at the distribution of Olist orders by state, we see that Sau Paulo
 
 
 ### How similar were weekly orders from Olist in SP in 2017?
-The cosine similarity is used to answer the question. To recap the cosine similarity, it is a measure of similarity between two non-zero vectors. It has high values when the vectors have the same components and the components are different. In a two dimensional vector, you have the x and the y component, for example. A weekly order is a vector of revenues from sales of inventory items that week. The components of the vector are the inventory items. The magnitude of the component is the amount revenue from the sale of that inventory item for the week. If we examine the cosine similarity of successive weeks of orders in SP, we can get a sense of similarity of the inventory items that were ordered in these weeks. 
+Cosine similarity is a metric used to quantify how similar two non-zero vectors are, based on the angle between them. In this context, each weekly order is represented as a vector, where each component corresponds to an inventory item and its value is the revenue generated from that item during the week. By calculating the cosine similarity between weekly order vectors, we can assess how similar the mix of purchased items is from week to week. High cosine similarity indicates that the same items contributed similarly to revenue across weeks, while lower values suggest more variation in purchasing patterns.
 
 ![weekly cosine similarity](../../images/cs_2017_SP.png)
 
