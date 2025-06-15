@@ -28,9 +28,15 @@ This repository contains recipes to describe datasets with the following element
 4. You analyze the cleaned and prepared data for the time period using descriptive analytics techniques.
 5. An example is provided using ecommerce data. 
 
-Real-world datasets, such as the Olist e-commerce dataset, are used to demonstrate each step.
+Real-world datasets, such as the Olist e-commerce dataset, are used to demonstrate each step. The basic assumptions made about the data are as follows:
 
----
+1. The key assumption behind this repository is that the data you are working with is operational and has a timestamp capturing the interaction activity of interest. This means that the data is not static but rather dynamic, reflecting real-time interactions or transactions.
+
+2. Business managers and a data scientist are working together to analyze specific metrics across a time period. The team knows what metrics are relevant to track and monitor.
+3. Profiling a metric is a precursor to monitoring it. This means that before you can effectively monitor a metric, you need to understand its behavior and characteristics over time.
+4. Business managers and data scientists often need to analyze several metrics across a time period. The curse of dimensionality is a common challenge in this context. Luckily, the machine learning and optimization community has developed techniques to address this issue.
+5. Humans have cognitive limitations when it comes to analyzing large datasets. Therefore, the repository focuses on techniques that help summarize and visualize data effectively, making it easier for humans to interpret and understand.
+6. Many small and medium-sized businesses do not have data on the scale of large enterprises. However, they have operational data that can be used to derive insights and make informed decisions. You don't need to use the tools and techniques designed for large-scale data to analyze operational data of small and medium-sized businesses. Hopefuly, this repository will convince you of this. Mapping your operational data to the techniques and tools used in this repository still takes skill and expertise, but it is a more accessible starting point for many businesses.
 
 ## 📁 Directory Structure
 
