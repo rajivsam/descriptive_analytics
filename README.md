@@ -21,10 +21,16 @@ This repository is dedicated to providing practical recipes and examples for per
 
 ## 🔍 Overview
 
+The basic idea of descriptive analytics is to provide a comprehensive understanding of operational data. A typical workflow includes:
 
-Descriptive analytics is a crucial step in the data analysis process, especially when dealing with operational data. This repository provides a collection of recipes and examples that illustrate how to apply descriptive statistical methods and machine learning techniques to analyze and summarize operational datasets. The goal is to help you understand the structure and characteristics of your data, which can inform subsequent modeling and decision-making processes.
-This repository is designed to be accessible to both business managers and data scientists, providing a systematic approach to analyzing operational data. It emphasizes the importance of profiling metrics before monitoring them, addressing the curse of dimensionality, and summarizing operational datasets for better human interpretation. Please review the olist case study for an example of the results of this process.
+1. Defining the business problem and the associated operational data.
+2. Defining the period and metrics to be analyzed.
+3. Transforming the raw data from step one to match step two.
+4. Working with your data science team to develop a set of descriptive models that give you an understanding of the business problem instance represented by the data.
+5. Interpreting the results of the descriptive models to gain insights into the business problem.
+6. Developing a set of monitoring metrics to track the business problem over time. The monitoring metrics should be based on the descriptive models developed in step four and should be designed to provide early warning signals of potential issues or opportunities.
 
+Please see the olist case study for a detailed example of this workflow.
 ## 📁 Directory Structure
 
 ```
