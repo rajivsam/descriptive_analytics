@@ -25,7 +25,10 @@ Cosine similarity is a metric used to quantify how similar two non-zero vectors 
 
 ![weekly cosine similarity](../../images/cs_2017_SP_succ_weeks.png)
 
-The cosine similarity of the succesive weekly orders in SP during 2017 was low in the first quarter. Most weeks had cosine similarity in the first quartile. It picks up in the second quarter and remains high for the rest of the year. This is a behavioral insight from the similarity analysis. It suggests that the purchasing behavior in SP was more consistent and stable in the second half of the year compared to the first half. This could be due to various factors such as seasonal trends, marketing campaigns, or changes in consumer preferences.
+The cosine similarity of the succesive weekly orders in SP during 2017 was low in the first quarter. Most weeks had cosine similarity in the first quartile. It picks up in the second quarter and moves in cycles. A moving average plot best brings out the cycles.
+
+![monthly moving average of cosine similarity between weekly orders](../../images/monthly_MA_CS.png)
+
 
 **code**:
 [cs_analysis_prod_purch_2017.ipynb](../../notebooks/cs_analysis_prod_purch_2017.ipynb)
