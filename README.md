@@ -1,4 +1,4 @@
-![Header Image](https://github.com/rajivsam/descriptive_analytics/blob/main/images/tunnel-background.png)
+![Header Image](https://github.com/rajivsam/descriptive_analytics/blob/main/images/readme_header.png)
 # 📊 Descriptive Analytics Recipes
 
 Welcome to the **Descriptive Analytics Recipes** repository!  
