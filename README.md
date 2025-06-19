@@ -1,3 +1,4 @@
+![Header Image](../descriptive_analytics/images/tunnel-background.jpg)
 # 📊 Descriptive Analytics Recipes
 
 Welcome to the **Descriptive Analytics Recipes** repository!  
