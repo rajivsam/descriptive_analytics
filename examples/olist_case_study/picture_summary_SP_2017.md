@@ -21,9 +21,9 @@ When we look at the distribution of Olist orders by state, we see that Sau Paulo
 
 
 ### How similar were weekly orders from Olist in SP in 2017?
-Cosine similarity is a metric used to quantify how similar two non-zero vectors are, based on the angle between them. In this context, each weekly order is represented as a vector, where each component corresponds to an inventory item and its value is the revenue generated from that item during the week. By calculating the cosine similarity between weekly order vectors, we can assess how similar the mix of purchased items is from week to week. High cosine similarity indicates that the same items contributed similarly to revenue across weeks, while lower values suggest more variation in purchasing patterns.
+Cosine similarity is a metric used to quantify how similar two non-zero vectors are, based on the angle between them. In this context, each weekly order is represented as a vector, where each component corresponds to an inventory item and its value is the revenue generated from that item during the week. By calculating the cosine similarity between consecutive weekly order vectors, we can assess how similar the mix of purchased items is from week to week. High cosine similarity indicates that the same items contributed similarly to revenue across weeks, while lower values suggest more variation in purchasing patterns. The plot below shows the cosine similarity of consecutive weekly orders in SP for the year 2017. The x-axis represents the week number, and the y-axis shows the cosine similarity value. The cosine similarity values have been binned into quartiles and color coded to identify the periods of high and low similarity.
 
-![weekly cosine similarity](../../images/cs_2017_SP.png)
+![weekly cosine similarity](../../images/cs_2017_SP_succ_weeks.png)
 
 The cosine similarity of the weekly orders in SP in the first half of 2017 is lower than the cosine similarity of the weekly orders in the second half of 2017. This suggests that the inventory items ordered in the first half of 2017 were more diverse than those ordered in the second half. There are some periods of high cosine similarity. The reason for this needs to be investigated further, but it could be due to seasonal trends or specific promotions that led to similar purchasing patterns.
 
