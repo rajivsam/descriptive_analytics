@@ -48,7 +48,7 @@ descriptive_analytics/
 
 ## ⚙️ Getting Started
 
-1. Go to the examples directory and select a case study that interests you. Each case study has is in a directory. There is a markdown file that describes the case study. Some are more complete than others, but you should be able to get a sense of the problem the case study aims to solve and the methodology used to solve it.  If you want to run the case study, you can do so by following the instructions below. It is recommended you take the time to understand the case study before running it. Some ideas do carry over from one case study to another, but it is best to understand the context of the case study before running it so that you can understand why the code is written the way it is and what the expected output is.
+1. Go to the examples directory and select a case study that interests you. Each case study is in a separate directory. There is a markdown file that describes the case study. Some are more complete than others, but you should be able to get a sense of the problem the case study aims to solve and the methodology used to solve it.  If you want to run the case study, you can do so by following the instructions below. It is recommended you take the time to understand the case study before running it. Some ideas do carry over from one case study to another, but it is best to understand the context of the case study before running it so that you can understand why the code is written the way it is and what the expected output is.
 
 2. **Clone the repository:**
      ```bash
@@ -72,7 +72,7 @@ The recipes and examples are created to emphasize a systematic approach to prepa
 ## 📝 Contributing
 
 Contributions are welcome!  
-Feel free to open issues, submit pull requests, or suggest new recipes.
+Feel free to open issues, submit pull requests, or suggest new recipes. If you have questions, please open an issue or contact the repository maintainers.
 
 ---
 
