@@ -48,18 +48,23 @@ descriptive_analytics/
 
 ## ⚙️ Getting Started
 
-1. **Clone the repository:**
+1. Go to the examples directory and select a case study that interests you. Each case study has is in a directory. There is a markdown file that describes the case study. Some are more complete than others, but you should be able to get a sense of the problem the case study aims to solve and the methodology used to solve it.  
+   You can also explore the conceptual documents in the `concept_discussion/` directory to understand the underlying principles of descriptive analytics.
+
+   - [Olist Case Study](examples/olist_case_study.ipynb)
+   - [Other Case Studies](examples/)
+2. **Clone the repository:**
      ```bash
      git clone https://github.com/yourusername/descriptive_analytics.git
      cd descriptive_analytics
      ```
 
-2. **Install dependencies:**
+3. **Install dependencies:**
      ```bash
      pip install -r requirements.txt
      ```
 
-3. **Explore the conceptual documents and examples:**
+4. **Explore the conceptual documents and examples:**
    - Read the concept discussions in the `concept_discussion/` directory.
    - Pick a case study from the `examples/` directory to follow the implementation sketch.
 
