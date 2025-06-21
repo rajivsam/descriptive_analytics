@@ -3,6 +3,11 @@
 # The Olist Dataset: Picture Summary for the Sau Paulo Region (SP) in 2017
 This page is an initial iteration demonstrating the utility of taking the time to develop a descriptive profile of your dataset prior to embarking on predictive tasks on the same dataset. This page uses a [dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce) that has applications to both retail and supply chain. It has transaction data that covers multiple geographic regions and a two year period. A schema is provided. It has data quality issues, but with analysis it is possible to isolate a chunk of data that can yield insights into purchasing behavior. Most importantly, performing a descriptive analysis such as this, maps your problem into simpler canonical problems - problems that we know how to solve well. A starting point like this dataset is representative in many ways to real life modeling projects. We have some broad analysis goals and a data dump that is created from this. Refinining this to useful models and insights is the ultimate goal.
 
+## To whom is the case study useful?
+This case study is useful to:
+1. Those who have a transaction dataset and want to understand how to analyze it.
+2. Those who have other kinds of user-activity datasets and want to understand how to analyze them. For example, you have an user health metric (say continuous glucose monitoring) and you have a user activity dataset (say, user activity on a health app). You consolidate user, activity and metric based on the time at which a health metric was recorded. You can then analyze the user activity dataset to understand how it relates to the health metric. This is a common pattern in many domains.
+
 
 
 ### Why Sau Paulo (SP)?
