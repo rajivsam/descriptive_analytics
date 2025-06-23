@@ -19,3 +19,4 @@ geopy
 geopandas[all]
 geodatasets
 geobr
+PyWavelets
