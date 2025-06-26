@@ -22,6 +22,7 @@ This repository is dedicated to providing practical recipes and examples for per
 
 ## 🔍 Overview
 
+<div style="text-align: justify;">   
 The basic idea of descriptive analytics is to provide a comprehensive understanding of operational data. A typical workflow includes:
 
 1. Defining the business problem and the associated operational data.
@@ -32,6 +33,7 @@ The basic idea of descriptive analytics is to provide a comprehensive understand
 6. Developing a set of monitoring metrics to track the business problem over time. The monitoring metrics should be based on the descriptive models developed in step four and should be designed to provide early warning signals of potential issues or opportunities.
 
 Please see the olist case study for a detailed example of this workflow. The example illustrates how to apply descriptive analytics to a real-world dataset, focusing on profiling metrics before monitoring them, addressing the curse of dimensionality, and summarizing datasets for better human interpretation. The examples directory also contains other case studies that follow a similar approach, providing a systematic way to analyze operational data.
+</div>
 ## 📁 Directory Structure
 
 ```
