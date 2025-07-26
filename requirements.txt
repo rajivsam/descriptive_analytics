@@ -20,3 +20,4 @@ geopandas[all]
 geodatasets
 geobr
 PyWavelets
+pydot

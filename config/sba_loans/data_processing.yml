@@ -1,0 +1,84 @@
+raw_data:
+  location: "sba_loans_data_raw/foia-7a-fy2020-present-asof-250331.tar.gz"
+  description: "Raw SBA loans data file"
+  format: "csv"
+  delimiter: ","
+  encoding: "utf-8"
+
+entities:
+  - borrower:
+      attributes:
+        - name: "BorrName"
+          type: "string"
+          description: "Unique identifier for the borrower"
+        - name: "BorrCity"
+          type: "string"
+          description: "City where the borrower is located"
+        - name: "BorrState"
+          type: "string"
+          description: "State where the business is located"
+        - name: "BorrZip"
+          type: "string"
+          description: "ZIP code of the borrower"
+  - lender:
+      attributes:
+        - name: "BankName"
+          type: "string"
+          description: "Name of the lender providing the loan"
+        - name: "BankFDICNumber"
+          type: "string"
+          description: "City where the lender is located"
+        - name: "BankCity"
+          type: "string"
+          description: "City where the lender is located"
+        - name: "BankState"
+          type: "string"
+          description: "State where the lender is located"
+        - name: "BankZip"
+          type: "string"
+          description: "ZIP code of the lender"
+  - loan:
+      attributes:
+        - name: "LoanID"
+          type: "string"
+          description: "Unique identifier for the loan"
+        - name: "GrossApproval" 
+          description: "Loan Duration in months"
+        - name: "ProjectCounty"
+          type: "string"
+          description: "Project County"
+        - name: "ProjectState"
+          type: "string"
+          description: "Project State"
+        - name: "NaicsCode"
+          type: "string"
+          description: "NAICS code for the business sector"
+        - name: "LoanStatus"
+          type: "string"
+          description: "Current status of the loan"
+        - name: "GrossChargeOffAmount"
+          type: "float"
+          description: "Total amount charged off for the loan"
+        - name: "NumPmtsMade"
+          type: "integer"
+          description: "Number of payments made on the loan"
+        
+relations:
+        borrower_to_bank:
+          type: "one_to_many"
+          from: "Borrower"
+          from_key: "BorrName"
+          to_key: "BankFDICNumber"
+          to: "Bank"
+          description: "A borrower can have multiple loans"
+
+        bank_to_loan:
+          type: "many_to_one"
+          from: "Bank"
+          from_key: "BankFDICNumber"
+          to_key: "LoanID"
+          to: "Loan"
+          description: "A borrower can be associated with multiple lenders across different states"
+
+        
+
