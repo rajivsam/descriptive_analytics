@@ -1,0 +1,25 @@
+\documentclass{article}
+
+\title{Graph Creation from Relations}
+\author{Rajiv Sambasivan}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+hough we may not be aware of it, the data we work with for data analytics or machine learning use cases is often relational in nature. This means that the data is structured in a way that allows us to represent relationships between different entities. For example, in a retail dataset, we might have customers, products, and transactions, where each transaction links a customer to a product. In earlier posts I have mentioned that one characteristic feature of working with enterprise data is that there is always a timestamp associated with the data. A set of interrelated entities with timestamps is a characteristic feature of operational data. Constructing a graph from such relational data can help us better understand the relationships and interactions between these entities. Operations Research (Network Models), Machine Learning (Graph Signal Processing, Graphical Models), and Data Science (Graph Analytics) all offer several canonical methods for working with graphs. Creating a graph given a set of relations puts us in a position to explore these methods and apply them to our data. The theory and practice of solving these canonical problems is well established, and if we can construct a graph from our data, we can apply these methods to gain insights, understand the characteristics of the data, and even build predictive models. If you are working with relational data, then there is a good chance that a graph perspective can benefit use case.
+
+There is more to applying the above ideas than simply creating a graph from the data. In the context of machine learning, when working with large datasets, there is typically heterogeneity in the relationships between entities. In a supervised learning setting, this may manifest in how predictors are related to each other, and to the target variable. In an unsupervised learning setting, this may manifest in how the data points are related to each other. In either case, the relationships between entities can be complex and multi-faceted.
+
+Typically, this heterogeneity can be characterized by using small number of graphs to represent our data. Each graph has the same predictor response relationship and the same relationship between predictors. In otherwords, rather than using a single graph to represent the entire dataset, we can use multiple graphs to represent different aspects of the data. This allows us to capture the heterogeneity in the relationships between entities and provides a more nuanced understanding of the data.
+
+
+\section{Section 1}
+Content of section 1.
+
+\section{Section 2}
+Content of section 2.
+
+\end{document}
