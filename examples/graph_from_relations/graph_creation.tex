@@ -1,5 +1,11 @@
 \documentclass{article}
 \usepackage{hyperref}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\graphicspath{{../../images/}}
+
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -26,18 +32,52 @@ Typically, this heterogeneity can be characterized by using small number of grap
 
 Heterogeneity has many faces. You can have one analysis task that is heterogeneous in how it manifests in the data or you may want to perform multiple analysis tasks on the same data. For example, you can develop recommendation model from customer transactions, and a clustering model to segment customers. Each of these tasks has a different graph representation of the same data. In summary, heterogeneity can manifest in the need for different models for different parts of the data for the same task, or, for different tasks on the same data. We will see examples of both these cases in the next section.
 
-\section{Graph Creation from Relations}
+\section{Examples of Graph Creation from Relations}
 I will provide two examples of how to create a graph from relations. In both these examples, I will point out the two points made in the previous section: (1) The data is a set of relations between entities. (2) The data can be viewed as a set of graphs. 
 
 The first example is the \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md}{Olist Case Study}. In this example the relations are between customers, products, and purchases(invoices). The description shows two summary perspectives of the data: (1) Temporal perspective, where the data is summarized by week of the year for the year 2017. (2) Spatial perspective, where the data is summarized by state in Brazil. This is an example of heterogeneity arising from different tasks (perspectives) on the same data.
  The summary shows that the data is relational in nature, and that it can be viewed as a set of graphs. The temporal perspective can be viewed as a graph where each week is a node, and the edges represent the relationships between weeks. The spatial perspective can be viewed as a graph where each state is a node, and the edges represent the relationships between cities in the state. The combination of these two perspectives can be viewed as a graph where a graph is produced for each state and each week, the spatio-temporal graph, can also be produced, but not done in this example. Graph signal processing methods can be applied to analyze, decompose, and summarize a signal such as the revenue on the nodes of the graph. The graph can also be used to build predictive models, such as forecasting revenue for a given week in a given state. The latter (predictive modeling) is not a descriptive task, but it builds on the structure developed in the descriptive task for predictive modeling. Both of these tasks are not done in the example. I will probably do a follow up post on this example to show how to apply graph signal processing methods to the data.
 
  Some discusion of the point about heterogeneity in models for the same task is in order. For the spatial perspective, the data is summarized by city in Sao Paulo state. The cosine similarity in sales is used to create a graph. Cities with similar sales are connected by an edge. The threshold used here is a simple threshold, but a range of techniques can be used to create the graph. Passing the similarity though an affinity kernel is one such technique. Basically, the similarities associated each city are passed through a kernel function to create a graph. Another approach is to use fixed neighborhood size, for example, five nearest neighbors. 
- As a result of appplying a suitable technique to select the edges associated wieh each city, we create a graph that captures the relationships between cities in Sao Paulo state. The connected components of this graph provides the heterogeneity in the relationships between cities. Some cities are not connected to any other city, while others are connected to several other cities. The ones not connected to any city are singleton connected components, while the ones connected to several other cities are larger connected components. The singleton connected components as a group can be analyzed using methods suitable for analyzing Independent and Identically Distributed (IID) data, while the larger connected components can be analyzed using methods suitable for analyzing graphs. \emph{As a consequence, we have two different analysis approaches to understand customer purchasing behavior in Sao Paulo state}. One for the IID data and one for the connected graph data.
+ As a result of appplying a suitable technique to select the edges associated wieh each city, we create a graph that captures the relationships between cities in Sao Paulo state. The connected components of this graph provides the heterogeneity in the relationships between cities. Some cities are not connected to any other city, while others are connected to several other cities. The ones not connected to any city are singleton connected components, while the ones connected to several other cities are larger connected components. The singleton connected components as a group can be analyzed using methods suitable for analyzing Independent and Identically Distributed (IID) data, while the larger connected components can be analyzed using methods suitable for analyzing graphs. \emph{As a consequence, we have two different analysis approaches to understand customer purchasing behavior in Sao Paulo state}. One for the IID data and one for the connected graph data. The figures below are from that case study
 
- The ideas used to identify heterogeneity in the relationships between entities is application and data dependent. There is no one size fits all approach to identifying heterogeneity in the relationships between entities. The key is to use domain knowledge and data analysis techniques to identify a technique for heterogeniety identification. For machine learning problems, there are some common ideas. For unsupervised learning problem, we can leverage covariance or similarity to identify heterogeneity. This is the case for the Olist example. For supervised learning problems, some parts of the data are easier to predict than others. For example, we can have regions of the data that are associated with a single label. These regions have a simple classification rule. Other regions may require more sophisticated classifiers. These other regions can be profiled by a  By adjusting the height of the tree and checking that results generalize, the dataset can be partitioned into regions (the leaves of the tree) that are each homogeneous from the standpoint of the learning task. For more details, please refer to \cite{DBLP:sambasivan_das_augmented_trees_2019}.
+ \begin{figure}[H]
+	\centering
+	\begin{subfigure}{.45\textwidth}
+		\includegraphics[width=\textwidth]{purch_behavior_SP_connected.png}
+		\caption{Schematic of Geographic Region for Graph Analysis}
+	\end{subfigure}
+%%%%%%%%%%%%%%
+	\begin{subfigure}{.45\textwidth}
+		\includegraphics[width=\textwidth]{purch_behavior_SP_IID.png}
+		\caption{Schematic of Geographic Region for IID Analysis}
+	\end{subfigure}
+
+\end{figure}
+
+ The ideas used to identify heterogeneity in the relationships between entities is application and data dependent. There is no one size fits all approach to identifying heterogeneity in the relationships between entities. The key is to use domain knowledge and data analysis techniques to identify a technique for heterogeniety identification. For machine learning problems, there are some common ideas. For unsupervised learning problem, we can leverage covariance or similarity to identify heterogeneity. This is the case for the Olist example. For supervised learning problems, some parts of the data are easier to predict than others. For example, we can have regions of the data that are associated with a single label. These regions have a simple classification rule. Other regions may require more sophisticated classifiers. These other regions can be profiled by a  By adjusting the height of the tree and checking that results generalize, the dataset can be partitioned into regions (the leaves of the tree) that are each homogeneous from the standpoint of the learning task. For more details, please refer to \cite{sambasivan_das_augmented_trees_2019}.
  
- The second example is the 
+ The second example comes from the \href{https://data.sba.gov/dataset/7-a-504-foia}{SBA website}. The data is the performance of a certain type of loan gauranteed by the Small Business Administration (SBA) in the US. For more information on these type of loans, see \href{https://www.sba.gov/funding-programs/loans/7a-loans}{this page}. The data is a set of relations between loans, borrowers, and lenders. The SBA reports the performance of these loans on a monthly basis. An important perspective of the data is the performance of loans by month. The loans span different geographic regions and a range of industries. The SBA guarantees the loans, so it may be important to understand the kind of regions and industries that are associated with good and bad performance each month. There is a a notebook that covers how the data associated the SBA loans is cleaned and prepared for this specific analysis task. 
+
+ For this specific analysis task, there is heterogeneity in the predictor response relationship for different parts of the data. Some Borrower regions have no defaults for example. If a borrower is from these regions, then the SBA knows that t the loan will not default. Other regions are a mixed bag and need a more sophisticated model to predict the performance of the loan. A notebook that covers the datails of preparing the data for this analysis task is available at \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/sba_loans.ipynb}{here}.
+
+ \begin{figure}[H]
+\centering
+\includegraphics[scale=.35]{good_borrower_loans_7a.png}
+\caption{Heterogeneity, Good Borrower Loans (limited toCalifornia)}
+\end{figure}
+
+ For this example, I have a sketch of an idea that I hope to abstract away into a generic tool for creating graphs from relations. This is discussed in the next section.
+
+\section{Creating a Graph from Relations, a Sketch of an Idea}
+
+The input we get for tabular operational data is typically one of the following:
+\begin{itemize}
+\item One n-nary relation where all the $n$ entities in the relation are listed as a row in the table. Each row contains the $n$ identifiers for the $n$ entities, and the attributes associated with entities. This is the case for both the Olist and SBA examples.
+\item Multiple relations from which we can construct a single n-nary relation.
+\end{itemize}
+
+In other words, we can get a dataset $\mathbf{D} = \{ r_1, r_2, \ldots, r_m \}$ where each $r_i$ is a relation. Each relation $r_i$ has a set of entities and attributes associated with the entities. The relations can be used to construct a single n-nary relation $\mathbf{R} = \{ e_1, e_2, \ldots, e_n \}$ where each $e_i$ is an entity and the attributes associated with the entity are the attributes of the relation.
 
 \bibliographystyle{plain}
 \bibliography{references}
