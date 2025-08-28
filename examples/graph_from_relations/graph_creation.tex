@@ -4,6 +4,8 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{subcaption}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{references.bib}
 \graphicspath{{../../images/}}
 
 \hypersetup{
@@ -20,6 +22,8 @@
 \date{\today}
 
 \begin{document}
+
+\sloppy
 
 \maketitle
 
@@ -56,12 +60,12 @@ As a result of applying a suitable technique to select the edges associated with
 
 \begin{figure}[H]
     \centering
-    \begin{subfigure}{.45\textwidth}
+    \begin{subfigure}{.48\textwidth}
         \includegraphics[width=\textwidth]{purch_behavior_SP_connected.png}
         \caption{Schematic of Geographic Region for Graph Analysis}
     \end{subfigure}
-%%%%%%%%%%%%%%
-    \begin{subfigure}{.45\textwidth}
+    \hfill
+    \begin{subfigure}{.48\textwidth}
         \includegraphics[width=\textwidth]{purch_behavior_SP_IID.png}
         \caption{Schematic of Geographic Region for IID Analysis}
     \end{subfigure}
@@ -85,7 +89,7 @@ For this example, I have a sketch of an idea that I hope to abstract away into a
 
 The input we get for tabular operational data is typically one of the following:
 \begin{itemize}
-\item One n-ary relation where all the $n$ entities in the relation are listed as a row in the table. Each row contains the $n$ identifiers for the $n$ entities, and the attributes associated with entities. This is the case for both the Olist and SBA examples.
+\item One n-ary relation where all the $n$ entities in the relation are listed as a row in the table. Each row contains the $n$ identifiers for the $n$ entities, and the attributes associated with entities. This is the case for both the Olist and SBA examples. To create this relation, we typically use the entity of interest, say a loan or an invoice as a pivot and join all the other entities associated with the pivot entity. The attributes associated with the entities are also included in the relation. This is the case when we want to learn a model that predicts something related to the pivot entity. For example, in the SBA example, we want to predict the performance of a loan, so we use the loan as the pivot entity and join all the other entities associated with the loan.
 \item Multiple relations from which we can construct a single n-ary relation. In other words, we can get a dataset $\mathbf{D} = \{ r_1, r_2, \ldots, r_m \}$ where each $r_i$ is a relation. Each relation $r_i$ has a set of entities and attributes associated with the entities. The relations can be used to construct a single n-ary relation $\mathbf{R} = \{ e_1, e_2, \ldots, e_n \}$ where each $e_i$ is an entity and the attributes associated with the entity are the attributes of the relation. This is the case when we want to learn a model that predicts an edge or a node in the graph. For now, we will assume that the input is a single n-ary relation $\mathbf{R}$, that is either given or can be constructed from the relations in $\mathbf{D}$.
 \end{itemize}
 
@@ -117,7 +121,5 @@ So a possible approach to standardizing the process of creating a graph from rel
 \section{Conclusion}
 This is an initial draft of a process to analyze and learn from relational data that is heterogeneous in nature. The heterogeneity can be identified by using domain knowledge and data analysis techniques. The process of creating a graph from relations is a key step in this process. This is done using a simple configuration file. The examples provided illustrate how to create a graph from relations and how to identify heterogeneity in the relationships between entities. The next steps are to refine the process and to develop a generic tool for creating graphs from relations. Adding more rigor and examples to the process of identifying heterogeneity in different machine learning tasks is work in progress.
 
-\bibliographystyle{plain}
-\bibliography{references}
-
+\printbibliography
 \end{document}

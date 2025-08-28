@@ -18,6 +18,8 @@ networkx
 geopy
 geopandas[all]
 geodatasets
-geobr
 PyWavelets
 pydot
+cvxopt
+cvxpy
+geobr

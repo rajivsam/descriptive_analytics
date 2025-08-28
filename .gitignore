@@ -9,3 +9,7 @@ __pycache__/
 # Ignore directories that have raw in the name in the data directory
 data/olist_raw/
 data/sba_loans_data_raw/
+# pytest .hypothesis directory
+.hypothesis/
+# Ignore vscode settings
+.vscode/
