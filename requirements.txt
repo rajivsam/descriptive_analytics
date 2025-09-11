@@ -23,3 +23,5 @@ pydot
 cvxopt
 cvxpy
 geobr
+category-encoders
+xgboost
