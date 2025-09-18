@@ -25,3 +25,4 @@ cvxpy
 geobr
 category-encoders
 xgboost
+PyNomaly

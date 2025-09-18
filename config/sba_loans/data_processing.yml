@@ -62,6 +62,15 @@ entities:
         - name: "NumPmtsMade"
           type: "integer"
           description: "Number of payments made on the loan"
+        - name: "JobsSupported"
+          type: "integer"
+          description: "Jobs supported by the loan"
+        - name: "CollateralInd"
+          type: "character"
+          description: "Is the loan collateralized"
+        - name: "SoldSecMrktInd"
+          type: "character"
+          description: "Is the loan sold in the secondary market"
         
 relations:
         borrower_to_bank:
