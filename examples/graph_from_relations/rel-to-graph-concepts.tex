@@ -1,8 +1,10 @@
 \documentclass{article}
 
+\usepackage{graphicx}
 \usepackage[backend=biber, style=numeric]{biblatex}
 \addbibresource{bibliography/ref-rel-graph-concepts.bib}
 \usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,hyperref}
+\graphicspath{{../../images/}}
 
 
  \hypersetup{
@@ -138,12 +140,19 @@ Note that we have information about who the bad borrowers are. This is a supervi
 The complement of the k neighborhood is the good borrower graph. See \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/sba_bad_borr_graph_ctor.ipynb}{ this notebook} for the details of this analysis.
 
 \subsubsection{Graph Analysis }
+The goal here is to model the bad borrowers.  We will use graph concepts to model the bad borrowers. Specifically, we will use graph concepts to create features for the bad borrowers that will be used to build a model for the bad borrowers. The features that are created are:
+\begin{itemize}
+    \item Risky Neighborhoods: Risky neighborhoods are immediate neighbors of bad borrowers. The risky neighborhood is identifed using the training dataset. A point in the training or test set is said to be in a risky neighborhood if its nearest neighbor belongs to the risky neighborhood. 
+    \item Distance of Bad Borrower Clusters: The bad borrowers are clustered using DB scan clustering. In this preliminary analysis, the number of clusters is set to be $2$ by adjusting the $\epsilon$ parameter of DB scan. The distance of a point in the training or test set to the two bad borrower cluster centroids is computed. This is an engineered feature.
+\end{itemize}
 
-A basic classifier is created using the bad borrower graph. Let us pause and reflect on the structure of the bad borrower graph. The bad borrower graph is constructed by connecting the $k$ nearest neighbors of each bad borrower in the training dataset. 
-
-Since each bad borrower is associated with the same number of neighbors, the bad borrower graph is a regular graph. The degree of each node in the bad borrower graph is $k$. This maps to a tabular structure. Each row in the table is a bad borrower and his or her $k$ neighbors. A simple classifier is created using this tabular structure. The classifier is a random forest classifier. The random forest classifier is trained using the training dataset. The performance of the classifier is evaluated using the validation dataset. 
-
-As with any imbalanced dataset, you need to trade off precision and recall. In this situation, recall is more important than precision. A high recall means that we are able to identify most of the bad borrowers. The balanced accuracy is used as the performance metric. The balanced accuracy is the average of the recall and the specificity. The balanced accuracy is a good metric for imbalanced datasets. The default threshold tuning settings were used, see \cite{probablcostsensitive2025}. By incorporating costs, these results can be improved, see \cite{verbraken2012novel}. The goal here is to illustrate the process of creating a graph from relational data and using the graph for analysis. T . See \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/sba_bad_loans_classifier.ipynb}{this notebook} for the details of this analysis.
+Because of the imbalance in the dataset, probablity estimates from a model are not reliable. Therefore a probablity calibration model is built. Again because of the imbalance, we have to select a threshold from the probability estimates to classify a borrower as bad or good. The threshold is selected using the validation dataset. The usual trade off in imbalanced application is between precision and recall. In domains like marketing, precision is more important than recall. In domains like fraud detection, recall is more important than precision. In this analysis, we have chosen to optimize the recall. The threshold that produces a recall of $0.90$ on the validation dataset is chosen. The model is then evaluated on the test dataset. This produces a recall of $0.85$ on the test dataset. So we get to catch about $85\%$ of the bad borrowers. The precision is low, but this has to be viewed in the context of the application. Only about $32\%$ of the borrowers are actually tagged as bad by the classifier and we still get to catch $85\%$ of the bad borrowers. This is not a bad result. We only need to investigate $32\%$ of the borrowers to catch $85\%$ of the bad borrowers.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{sba_loans_clf_perf.png}
+    \caption{Classification Performance on Test Dataset}
+    \label{fig:loan-graph-example}
+\end{figure}
 
 \subsection{Bipartite Graph Construction from Relational Data}
 To do: An example of bipartite graph analysis from the Olist e-commerce dataset will be presented here.
