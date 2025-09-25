@@ -1,0 +1,85 @@
+entity:
+- description: Borrower name
+  name: BorrName
+  type: category
+- description: Borrower city
+  name: BorrCity
+  type: category
+- description: Borrower state
+  name: BorrState
+  type: category
+- description: Borrower zip code
+  name: BorrZip
+  type: category
+- description: Borrower Business Type - Individual, Partnership, or Corporation
+  name: BusinessType
+  type: category
+- description: "SBA began collecting the following business age information in fiscal\
+    \ year 2018:  \n\u2022 Change of Ownership\n\u2022 Existing or more than 2 years\
+    \ old\n\u2022 New Business or 2 years or less\n\u2022 Startup, Loan Funds will\
+    \ Open Business"
+  name: BusinessAge
+  type: category
+- description: Name of the bank that the loan is currently assigned to
+  name: BankName
+  type: category
+- description: Bank city
+  name: BankCity
+  type: category
+- description: Bank state
+  name: BankState
+  type: category
+- description: Bank zip code
+  name: BankZip
+  type: category
+- description: Initial interest rate - total interest rate (base rate plus spread)
+    at time loan was approved
+  name: InitialInterestRate
+  type: float
+- description: Fixed/variable interest rate indicator
+  name: FixedOrVariableInterestInd
+  type: category
+- description: North American Industry Classification System (NAICS) code
+  name: NaicsCode
+  type: category
+- description: Length of loan term
+  name: TermInMonths
+  type: float
+- description: Indicator of whether a loan is a term loan or revolving line of credit
+    (0=Term, 1=Revolver)
+  name: RevolverStatus
+  type: category
+- description: An indicator whether the SBA lender reported that the loan was backed
+    by collateral
+  name: CollateralInd
+  type: category
+- description: "An indicator if the loan was sold on the secondary market. This is\
+    \ a static field once it is sold on the secondary market.Equals 'Y', if sold on\
+    \ the secondary market. Once it is 'Y' it will stay 'Y' for it's entirety.\_"
+  name: SoldSecMrktInd
+  type: category
+- description: Total loan balance charged off (includes guaranteed and non-guaranteed
+    portion of loan)
+  name: GrossChargeOffAmount
+  type: float
+- description: Date loan was paid in full (if applicable)
+  name: PaidInFullDate
+  type: category
+- description: County where project occurs
+  name: ProjectCounty
+  type: category
+- description: State where project occurs
+  name: ProjectState
+  type: category
+- description: "Current status of loan:  \n\u2022 COMMIT = Undisbursed\n\u2022 PIF\
+    \ = Paid In Full\n\u2022 CHGOFF = Charged Off\n\u2022 CANCLD = Cancelled\n\u2022\
+    \ EXEMPT = The status of loans that have been disbursed but have not been cancelled,\
+    \ paid in full, or charged off are exempt from disclosure under FOIA Exemption\
+    \ 4"
+  name: LoanStatus
+  type: category
+raw_data:
+  description: Raw SBA loans data file
+  encoding: utf-8
+  format: CSV
+  location: ../data/sba_loans_data_raw/foia-7a-fy2020-present-asof-250331.tar.gz

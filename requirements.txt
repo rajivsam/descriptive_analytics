@@ -1,6 +1,6 @@
 pymc
 numpy
-scikit-learn
+scikit-learn < 1.6
 pandas
 numpy
 scipy
@@ -26,3 +26,4 @@ geobr
 category-encoders
 xgboost
 PyNomaly
+openpyxl
