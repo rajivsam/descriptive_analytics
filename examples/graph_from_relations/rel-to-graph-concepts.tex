@@ -99,7 +99,7 @@ The initial assessment is done on the raw data obtained from the source systems.
     \item If you need numeric features for heterogeneity analysis, then you might want to featurize the dataset. If, for example you need to use clustering to group data into similar subsets, then you need to perform featurization where data for each entity chain is completely numeric. If you want to rely on segmentation, which translates to a group-by operation, to identify heterogeneity, you don't need to featurize at this point. So when you want to featurize a dataset will depend on how you want to do heterogeneity analysis.
 \end{itemize}
 
-The note comments in each of the steps above will be used to guide further processing. 
+The note comments in each of the steps above will be used to guide further processing. A resource that is old but still relevant is \cite{pyle1999data}. The book provides a good overview of data preparation tasks.
 
 \subsection{Heterogeneity Analysis} \label{sec: heterogeneity analysis}
 The dataset that you created at the end of the previous step will be used for heterogeneity analysis. See \cite{sambasivan2025_heterogeneity} for details. The point about being clear about the type of analysis you want to perform for your use case will help with the analysis of heterogeneity. If you are using graphs for analysis, then heterogeneity is implicitly accounted for. However, it is still useful to understand the sources of heterogeneity in your data. This will help you understand the results of your analysis and also help you communicate the results to stakeholders. Therefore, it is useful to analyze the source dataset for heterogeneity.
