@@ -142,15 +142,16 @@ However, the integration of KMDS with the steps outlined in this document is a w
 
 \section{Examples of Implementation}
 
-\subsection{Homogeneous Graph Construction with known Relationships}
+\subsection{Homogeneous Graph Construction for Feature Engineering}
+Graphs can be used to develop features for a machine learning model. In this example, we consider the problem of developing a representation for good borrowers in the SBA 7a loans dataset. This representation can be used for tasks such as developing a taxonomy of good borrowers. Understanding the heterogeneity of good borrowers can inform the design of new loan products. It can also help identify good borrowers that are similar to bad borrowers. This can help identify potential risks in the loan portfolio. In this example, we represent good borrowers as a graph and then develop a representation for this graph using a spectral embedding technique. The representation can then be used in a machine learning model. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_loans_desc_analysis.pdf}{this document} for details.
 
-
-
+\subsection{Homogeneous Graph Construction for Representation Learning}
+Graphs can be used to develop a representation for a set of entities. In this example, we consider the problem of developing a representation for good borrowers in the SBA 7a loans dataset. This representation can be used for tasks such as developing a taxonomy of good borrowers. Understanding the heterogeneity of good borrowers can inform the design of new loan products. It can also help identify good borrowers that are similar to bad borrowers. This can help identify potential risks in the loan portfolio. In this example, we represent good borrowers as a graph and then develop a representation for this graph using a spectral embedding technique. The representation can then be used in a machine learning model. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_good_borrower.pdf}{this document} for details. Note that this example is different from the previous example in that the representation is used for unsupervised learning. There is a single entity of interest, the good borrower. However, a similar approach can be used when multiple entities of interest are present and collaborate to accomplish a task. We will explore this in subsequent examples.
 
 \subsection{Bipartite Graph Construction from Relational Data}
 To do: An example of bipartite graph analysis from the Olist e-commerce dataset will be presented here.
 
-\subsection{Heterogeneous Graph Construction from Relational Data}
+\subsection{Heterogeneous Graph Construction from Relational Data} 
 
 To do: Please see \cite{helpdeskgcnsambasivan2022predicting} for an example of heterogeneous graph construction from relational data. The example uses service now data from a IT helpdesk. A heterogeneous graph is constructed from relational data. The graph is used to predict the resolution difficulty of an incident ticket. The \href{https://www.sciencedirect.com/science/article/pii/S2666827021001195}{paper} is open access.
 
