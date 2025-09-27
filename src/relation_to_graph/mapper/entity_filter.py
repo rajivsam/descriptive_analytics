@@ -12,7 +12,7 @@ consoleHandler = logging.StreamHandler()
 consoleHandler.setFormatter(logFormatter)
 rootLogger.addHandler(consoleHandler)
 
-class HomoR2GMapperSupervised:
+class EntityFilter:
     def __init__(self, config_file: str) ->None:
         """
         Initializes the parser with the given configuration file.
