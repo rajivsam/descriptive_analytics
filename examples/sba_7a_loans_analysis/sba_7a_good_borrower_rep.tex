@@ -13,7 +13,7 @@
             anchorcolor = blue]{hyperref}
 \usepackage{enumitem}
 \usepackage[backend=biber, style=numeric]{biblatex}
-\addbibresource{sba_classification.bib}
+\addbibresource{sba_manifold.bib}
 \usepackage[skins]{tcolorbox}
 \usepackage[T1]{fontenc}
 \usepackage[ttdefault=true]{AnonymousPro}
@@ -34,10 +34,20 @@
  \end{tcolorbox}
 
 \section{Introduction}
-Developing a representations of data that is part of a graph so that it can be used in a machine learning model is an important problem. In this example, we consider the problem of developing a representation for good borrowers in the SBA 7a loans dataset. This representation can be used for tasks such as developing a taxonomy of good borrowers. Understanding the heterogeneity of good borrowers can inform the design of new loan products. It can also help identify good borrowers that are similar to bad borrowers. This can help identify potential risks in the loan portfolio. In the previous exercise, graphs were used to develop features for borrowers. In this example, we represent good borrowers as a graph and then develop a representation for this graph using a spectral embedding technique. The representation can then be used in a machine learning model.
-We start with a set of relations and then develop a graph. Spectral embedding is then used to develop a representation for the graph.
+Graph representations play a crucial role in many real-world applications, enabling the extraction of meaningful patterns from complex relational data. First of, what is a graph representation in simple terms. A graph is an object with vertices and edges. Machine learning algorithms work with vectors, in supervised learning, you need a label along with a vector. The question you may have is "Is it possible to convert a graph representation of some real world process to a vector so that I can model or study that process with standard machine learning techniques?". The answer is yes, and we will explore one such method in this example. In this example, we focus on constructing a representation for good borrowers within the SBA 7a loans dataset. Such representations are valuable for tasks like building taxonomies of borrower profiles, designing tailored loan products, and identifying borrowers who, despite being classified as good, share similarities with higher-risk individuals—thus aiding in risk management.
 
-.
+Previously, we explored feature engineering for borrowers using graph structures. Here, we take a step further by modeling good borrowers as nodes in a graph. We then apply spectral embedding techniques to generate low-dimensional representations of this graph, making the data suitable for downstream machine learning tasks.
+
+\section{Methodology}
+We begin by constructing a graph where each node represents a good borrower. Constructing a graph requires the notion of similarity between borrowers. We define similarity based on distance, shared attributes or some other criteria. For this example, we use a simple distance-based similarity measure. We compute pairwise distances between borrowers using their feature vectors. At this point, the following are the ways to construct a graph:
+\begin{itemize}
+    \item \emph{k-nearest neighbors (k-NN)} graph: Connect each borrower to its k-nearest neighbors based on the computed distances.
+    \item Epsilon-neighborhood graph: Connect borrowers that are within a certain distance (epsilon) of each other. This is done by selecting a \emph{kernel}, such as the Gaussian kernel, and using it to calculate edge weights. By selecting an appropriate bandwidth for the kernel, we can control the sparsity of the graph.
+\end{itemize}
+
+Note at this point, by simply adjusting the parameters ($k$ or $\gamma$, the bandwidth of the kernel ), we can partition the graph into different connected components. This is useful for identifying clusters of similar borrowers. Each connected component can be treated as a subgraph, and we can analyze these subgraphs separately. This is particularly useful for working with large datasets, as it allows us to focus on smaller, more manageable sections of the graph.
+
+Recall that each point in the graph that you constructed above has a set of coordinates (attributes). A question that may arise is "Is the cloud of points associated with the graph on a plane or a curved surface?". If a plane is a reasonable assumption, then, simpler methods such as PCA can yield good low dimensional rempresentations of your points. Manifold learnning methods, such as the spectral-embedding can capture non-linear structure as well. For this reason, we will focus on the spectral-embedding technique in this work. A detailed discussion of these techniques is outside the scope of this document, the interested reader can use resources such as \cite{ghodsi_2017_unsup_learning_course} for details. The original data representation resided in \emph{ambient space}, spectral embedding determines a low dimensional representation of each data point by preserving the neighborhood around each point. There are a variety of techniques available for manifold learning, see \cite{ghodsi_2017_unsup_learning_course} for more information. Another popular way to learn the representation of the graph we just created is by performing a \emph{random walk} on each node of the graph we constructed and then looking the nodes we visit often from each node with a probablistic perspective and use that to generate the low dimensional embedding, see \cite{leskovic_jure_cs_224_rw_lecture} for the details. Both are popular, reasonable approaches. These are by no means the only ways to learn embeddings on graphs, see \cite{hamilton2020graph} and \cite{chami_etal} for a comprehensive treatment.
 
 \printbibliography
 
