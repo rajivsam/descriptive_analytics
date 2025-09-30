@@ -27,3 +27,4 @@ category-encoders
 xgboost
 PyNomaly
 openpyxl
+gower-multiprocessing
