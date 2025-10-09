@@ -1,0 +1,52 @@
+\documentclass[12pt]{article}
+
+% Packages
+\usepackage{amsmath, amssymb}
+\usepackage{geometry}
+\usepackage{graphicx}
+\graphicspath{{../../images/}}
+
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage{enumitem}
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{olist_coclustering.bib}
+\usepackage[skins]{tcolorbox}
+\usepackage[T1]{fontenc}
+\usepackage[ttdefault=true]{AnonymousPro}
+\renewcommand*\familydefault{\ttdefault} %% Only if the base font of the document is to be typewriter style
+% Page setup
+
+\geometry{margin=1in}
+
+\begin{document}
+
+\begin{tcolorbox}[halign=flush center]
+         \textbf{Analysis of Olist Shoppers in SP with Bipartite Spectral Clustering}
+   
+ \end{tcolorbox}
+
+ \section{Overview}
+This section builds upon the findings from the \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/approach_to_analysis.md}{descriptive analytics case study}, with a summary available \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md}{here}. In this example, we illustrate a second common theme in the application of graph-based analysis in machine learning: modeling data as a bipartite graph to uncover meaningful patterns and relationships.\footnote{See the documents under the \href{https://github.com/rajivsam/descriptive_analytics/tree/main/examples/sba_7a_loans_analysis}{sba loans descriptive analysis}, for an example of using homogeneous graphs in machine learning and analytics applications.Homogeneous graphs are the first common theme in application of graph in machine learning and analytics}. This example tells you how shoppers used Olist in Sau Paulo in the year 2017. In particular, it brings out the patterns in shopping activity over the weeks of the year in 2017.
+
+ \section{Data Description}
+The dataset originates from \href{https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce}{Kaggle} and contains transaction records from a Brazil-based online retailer. A review of the links in the previous section would show that the year 2017 offers the most complete and representative sample of shopping activity, with São Paulo accounting for nearly 40\% of all transactions. Analyzing this major market is therefore crucial. This analysis looks at shopping activity in Sau Paulo during 2017 \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/cs_analysis_prod_purch_2017.ipynb}{notebook}. In this study, we extend the analysis using a co-clustering approach, which simultaneously groups both weekly purchase activity and products purchased. This method reveals affinities between specific products and particular periods (weeks) of the year.
+
+ \section{Methodology}
+ \begin{enumerate}
+    \item Use the dataset computed as part of the descriptive analytics exercise for the olist dataset, \href{https://github.com/rajivsam/descriptive_analytics/blob/main/data/olist_prepared/freq_prod_weekly_sale_SP_2017.parquet}{this one}.
+    \item Prepare the dataset to run the co-clustering algorithm developed and reported in \cite{dhillon2001co}. This requires the computation of the \emph{normalized laplacian}. If you followed the implementation of the previous exercise, running the spectral clustering on the \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_risky_borrower_analysis.pdf}{risky borrowers}, this will be very similar. Please review the details of the spectral clustering algorithm used in that work, this will be similar, but not the same. The details are described in section \ref{sec:coclustering}.
+    \item Identify the number of clusters needed for coclustering using the \emph{spectral gap} analysis, similar to the \emph{sba risky borrowers} example.
+    \item Analyze and profile the results from coclustering.
+ \end{enumerate}
+
+ \section{Spectral CoClustering Implementation}\label{sec:coclustering}
+
+ \section{Results}
+
+ \section{Discussion and Insights}
+
+\end{document}
