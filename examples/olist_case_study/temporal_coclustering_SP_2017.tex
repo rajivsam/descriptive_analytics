@@ -25,28 +25,87 @@
 \begin{document}
 
 \begin{tcolorbox}[halign=flush center]
-         \textbf{Analysis of Olist Shoppers in SP with Bipartite Spectral Clustering}
+         \textbf{Analysis of Olist Shoppers in SP with Spectral Co-Clustering}
    
  \end{tcolorbox}
 
  \section{Overview}
-This section builds upon the findings from the \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/approach_to_analysis.md}{descriptive analytics case study}, with a summary available \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md}{here}. In this example, we illustrate a second common theme in the application of graph-based analysis in machine learning: modeling data as a bipartite graph to uncover meaningful patterns and relationships.\footnote{See the documents under the \href{https://github.com/rajivsam/descriptive_analytics/tree/main/examples/sba_7a_loans_analysis}{sba loans descriptive analysis}, for an example of using homogeneous graphs in machine learning and analytics applications.Homogeneous graphs are the first common theme in application of graph in machine learning and analytics}. This example tells you how shoppers used Olist in Sau Paulo in the year 2017. In particular, it brings out the patterns in shopping activity over the weeks of the year in 2017.
+This section builds upon the findings from the \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/approach_to_analysis.md}{Olist descriptive analytics case study}, with a summary available \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md}{here}. In this example, we illustrate a second common theme in the application of graph-based analysis in machine learning: modeling data as a bipartite graph to uncover meaningful patterns and relationships.\footnote{See the documents under the \href{https://github.com/rajivsam/descriptive_analytics/tree/main/examples/sba_7a_loans_analysis}{sba loans descriptive analysis}, for an example of using homogeneous graphs in machine learning and analytics applications.Homogeneous graphs are the first common theme in application of graph in machine learning and analytics}. The bipartite graph model finds extensive application, for a  comprehensive review, see \cite{kunegis2015exploiting}. This example tells you how shoppers used Olist in Sau Paulo in the year 2017. In particular, it brings out the patterns in shopping activity over the weeks of the year in 2017.
 
  \section{Data Description}
 The dataset originates from \href{https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce}{Kaggle} and contains transaction records from a Brazil-based online retailer. A review of the links in the previous section would show that the year 2017 offers the most complete and representative sample of shopping activity, with São Paulo accounting for nearly 40\% of all transactions. Analyzing this major market is therefore crucial. This analysis looks at shopping activity in Sau Paulo during 2017 \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/cs_analysis_prod_purch_2017.ipynb}{notebook}. In this study, we extend the analysis using a co-clustering approach, which simultaneously groups both weekly purchase activity and products purchased. This method reveals affinities between specific products and particular periods (weeks) of the year.
 
  \section{Methodology}
- \begin{enumerate}
-    \item Use the dataset computed as part of the descriptive analytics exercise for the olist dataset, \href{https://github.com/rajivsam/descriptive_analytics/blob/main/data/olist_prepared/freq_prod_weekly_sale_SP_2017.parquet}{this one}.
-    \item Prepare the dataset to run the co-clustering algorithm developed and reported in \cite{dhillon2001co}. This requires the computation of the \emph{normalized laplacian}. If you followed the implementation of the previous exercise, running the spectral clustering on the \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_risky_borrower_analysis.pdf}{risky borrowers}, this will be very similar. Please review the details of the spectral clustering algorithm used in that work, this will be similar, but not the same. The details are described in section \ref{sec:coclustering}.
-    \item Identify the number of clusters needed for coclustering using the \emph{spectral gap} analysis, similar to the \emph{sba risky borrowers} example.
-    \item Analyze and profile the results from coclustering.
- \end{enumerate}
+\begin{enumerate}
+    \item Begin with the prepared dataset from the descriptive analytics exercise: \href{https://github.com/rajivsam/descriptive_analytics/blob/main/data/olist_prepared/freq_prod_weekly_sale_SP_2017.parquet}{freq\_prod\_weekly\_sale\_SP\_2017.parquet}.
+    \item Model the data as a bipartite graph, where one vertex set represents the weeks of the year and the other represents product inventory. An edge between a week and a product indicates that the product was sold during that week (i.e., a nonzero entry in the data matrix).
 
- \section{Spectral CoClustering Implementation}\label{sec:coclustering}
+    \item Prepare the data for the spectral co-clustering algorithm described in \cite{dhillon2001co}, including computation of the normalized Laplacian. 
+    
+    \item Apply co-clustering, which simultaneously groups both rows (weeks) and columns (products) to uncover subsets that exhibit similar patterns. This approach provides a more granular view than traditional clustering, revealing associations between specific products and time periods. The methodology is similar to the spectral clustering approach used in the \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_risky_borrower_analysis.pdf}{risky borrowers} analysis, with adaptations for bipartite graphs as detailed in Section~\ref{sec:coclustering}.
+    
+    \item Determine the optimal number of clusters using spectral gap analysis, following the procedure from the sba risky borrowers example.
+    \item Interpret and profile the resulting co-clusters to extract actionable insights.
+\end{enumerate}
+
+\section{Spectral Co-Clustering}\label{sec:coclustering}
+This section outlines the conceptual framework behind spectral co-clustering, following the methodology of \cite{dhillon2001co}. Unlike traditional clustering, which groups either rows (examples) or columns (features) independently, co-clustering simultaneously identifies subsets of both rows and columns that exhibit similar patterns. This approach is particularly effective for high-dimensional datasets, such as gene expression data, text corpora, or medical imaging, where meaningful associations often exist between specific groups of features and data points.
+
+The core idea is the duality between clustering rows and columns: clusters of examples often correspond to clusters of features, and vice versa. In bipartite data, this relationship is captured by a rectangular data matrix, rather than the square similarity matrices used in standard spectral clustering. The algorithm proceeds by constructing a normalized Laplacian from the bipartite graph, then analyzing its eigenvalues to determine the number of clusters via the spectral gap.
+
+The embedding for clustering is derived from the left and right eigenvectors of the Laplacian, representing the two vertex sets (weeks and products). Following \cite{dhillon2001co}, the number of embedding dimensions $l$ is chosen as $l = \lceil \log{k} \rceil$, where $k$ is the number of clusters identified. K-Means is then applied to these embeddings to obtain the final co-clusters.
+
+For a comprehensive review of co-clustering methods, see \cite{Battaglia_coclustering_2025}. Implementation details are available in \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/SP_2017_spectral_coclustering.ipynb}{this notebook}.
 
  \section{Results}
+ To set up the discussion of the results, let's start with what we know from the results of conventional clustering on this data, \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/cs_analysis_prod_purch_2017.ipynb}{available here}. The neighborhood graph was set up with a cosine similarity measure. A threshold of $0.4$ was used to compute the neighborhood graph. Nodes with cosine similarity greater than this threshold are connected. By inspecting the distance matrix visually (using a heatmap), four clusters were found. Spectral clustering of this cosine similarity graph produced the clustering shown in. figure \ref{fig:cs_similarity_clustering}. We see one big cluster and three smaller clusters corresponding to what we think are either sales promotion or holiday season based activity. 
 
- \section{Discussion and Insights}
+\begin{figure}[h]\label{fig:cs_similarity_clustering}
+    \centering
+    \includegraphics[width=0.8\textwidth]{cs_2017_temporal_clusters_weekly_rev.png}
+    \caption{Spectral clustering with cosine similarity on SP 2017 weekly shopping data. The figure shows the clusters identified among weeks based on shopping patterns, using a cosine similarity threshold of 0.4.}
+    \label{fig:spectral_cosine_sp2017}
+\end{figure}
+
+In the conventional clustering approach, the number of clusters was determined by visually inspecting the heatmap, rather than using the spectral gap method. As will be shown, both approaches yield similar results for this dataset. However, a key limitation of traditional clustering is that it does not directly reveal associations between products and clusters—such insights require additional post-hoc analysis. In contrast, co-clustering simultaneously identifies groups of weeks and products, providing these associations as part of the clustering output.
+
+To set up the co-clustering algorithm, we compute the \emph{normalized laplacian} matrix of the shopping activity for $2017$. We run \emph{SVD} on it and plot the (ordered) eigenvalues. This is shown in figure \ref{fig:spec-gap-identification}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{coclustering_spec_gap.png}
+    \caption{Spectral gap identification for co-clustering. The plot shows the ordered eigenvalues of the normalized Laplacian, used to determine the optimal number of clusters.}
+    \label{fig:spec-gap-identification}
+\end{figure}
+For this data, the optimal number of clusters ($k$), is $16$. We provide this as an input to the co-clustering algorithm and the algorithm reports the row (week of the year) and column (product) clusters. These are shown in figure \ref{fig:co-clustering-results-week} and figure \ref{fig:co-clustering-results-product}.
+
+\begin{figure}[h!]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[scale=0.5]{week_activity_cluster_summ.png}
+        \caption{Weekly activity clusters}
+        \label{fig:co-clustering-results-week}
+    \end{minipage}\hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[scale=0.35]{product_cluster_summ.png}
+        \caption{Product purchase clusters}
+        \label{fig:co-clustering-results-product}
+    \end{minipage}
+\end{figure}
+
+A review of the \emph{week} component in figure \ref{fig:co-clustering-results-week} shows a large cluster of $46$ weeks and some small clusters. This is consistent with what is observed in the results of similarity clustering, figure \ref{fig:cs_similarity_clustering}. With co-clustering, we can pick the \emph{column} components of a cluster directly. For example, the product-id's in \emph{cluster-8} of the product clusters is shown in figure \ref{fig:cluster_products}. This additional resolution is a feature of co-clustering.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.45]{cluster_products.png}
+    \caption{Product cluster 8 partial composition (product ID's)}
+    \label{fig:cluster_products}
+\end{figure}
+
+\section{Discussion and Insights}
+Spectral co-clustering provides actionable insights into complex, high-dimensional datasets by simultaneously grouping rows and columns—here, weeks and products. This dual clustering approach enables practitioners to not only identify temporal patterns in shopping activity, but also to directly associate specific products with distinct periods of heightened or specialized demand. For example, business analysts can pinpoint which products are characteristic of holiday or promotional clusters, while researchers in other domains—such as healthcare or neuroscience—can use co-clustering to reveal associations between groups of features (gene expression or EEG signal) and data points (patients or subjects), leading to more interpretable and targeted findings. In this example, the method uncovers both the overall temporal aggregation of shopping activity in São Paulo during 2017 and the product categories that define each cluster, offering a richer understanding than conventional clustering approaches.
+ \printbibliography
 
 \end{document}
