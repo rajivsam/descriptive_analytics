@@ -149,11 +149,17 @@ Graphs can be used to develop features for a machine learning model. In this exa
 Graphs can be used to develop a representation for a set of entities. In this example, we consider the problem of developing a representation for good borrowers in the SBA 7a loans dataset. This representation can be used for tasks such as developing a taxonomy of good borrowers. Understanding the heterogeneity of good borrowers can inform the design of new loan products. It can also help identify good borrowers that are similar to bad borrowers. This can help identify potential risks in the loan portfolio. In this example, we represent good borrowers as a graph and then develop a representation for this graph using a spectral embedding technique. The representation can then be used in a machine learning model. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_good_borrower.pdf}{this document} for details. Note that this example is different from the previous example in that the representation is used for unsupervised learning. There is a single entity of interest, the good borrower. However, a similar approach can be used when multiple entities of interest are present and collaborate to accomplish a task. We will explore this in subsequent examples.
 
 \subsection{Bipartite Graph Construction from Relational Data}
-To do: An example of bipartite graph analysis from the Olist e-commerce dataset will be presented here.
+Bipartite graphs can be used to represent relationships between two types of entities. The page shows an example of using descriptive analytics to understand important characteristics of shopping behavior of customers in a retail setting. One part of the analysis examines the shopping behavior of customers in Sao Paulo, Brazil. A bipartite graph is constructed where the bipartite vertex sets ar the cities in Sau Paulo and the products purchased by customers in these cities. The edges represent the purchase of a product by a customer in a city. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md}{this document} for of the analysis. The details of the bipartite graph construction and the subsequent analysis are provided in \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/temporal_coclustering_SP_2017.pdf}{this document}.
 
 \subsection{Heterogeneous Graph Construction from Relational Data} 
 
-To do: Please see \cite{helpdeskgcnsambasivan2022predicting} for an example of heterogeneous graph construction from relational data. The example uses service now data from a IT helpdesk. A heterogeneous graph is constructed from relational data. The graph is used to predict the resolution difficulty of an incident ticket. The \href{https://www.sciencedirect.com/science/article/pii/S2666827021001195}{paper} is open access.
+The third common theme we counter is a small set of connected entities and relationships. As part of the input to the analysis, we have the entities and the relationships between the entities. We treat these entities and relationships as a heterogeneous graph. The analysis tasks in this case are typically are:
+\begin{enumerate}
+    \item Predict the property of an specific entity, \emph{node classification}
+    \item Predict the relationship between two entities, \emph{link prediction}
+    \item Predict the label associated with a new set of related entities, \emph{graph classification}
+\end{enumerate}
+A complete example of heterogeneous graph construction and analysis is provided in \href{https://www.sciencedirect.com/science/article/pii/S2666827021001195}{this article}\cite{SCHAD2022100237}.
 
 
 

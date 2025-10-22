@@ -29,3 +29,4 @@ PyNomaly
 openpyxl
 gower-multiprocessing
 jenkspy
+skrub
