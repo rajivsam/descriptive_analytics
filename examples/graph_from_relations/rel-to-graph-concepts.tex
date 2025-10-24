@@ -35,118 +35,60 @@ In a \emph{longitudinal analysis}, heterogeneity occurs over time. A study where
 In \emph{Panel Data}, you need to account for sources of variation you have observed with both \emph{cross-sectional} and \emph{longitudinal} data. A company may track the purchasing behavior of a set of customers over time. In such cases, you need to account for heterogeneity across customers as well as heterogeneity over time.
 
 
-
-
-
-
-\subsection{The Relational Model}
-\cite{codd1970relational} introduced the relational model, which is the logical foundation for relational databases. In this model, data is represented as relations (tables), where each relation consists of tuples (rows) and attributes (columns). An algebraic framework for manipulating these relations is provided by relational algebra, which includes binary operations (operate on two relations) such as join and union, as well as unary operations like selection and projection (operate on a single relation). The relational model provides a mathematical framework for representing and querying data.
-
-\subsection{The Entity-Relationship Model}
-The entity-relationship (ER) model, introduced by \cite{chen1976entity} is a framework for describing the \emph{semantic} data abstractions and their relationship with each other. For example, if your use case is about how students in a university register for courses, then \emph{students, course, registration} might be a set of data abstractions. The \emph{registration} may connect a student with a course for a particular semester. From a \emph{data representation} point of view, all semantic abstractions may be represented as relations.
-
-\subsection{The Entity-Relationship to Relational Schema Mapping}\label{sec: er to rel}
-There exist guidelines and a body of knowledge around mapping an \emph{Entity-Relationship Model} to a \emph{Relational Schema}. See \cite{elmasri2016fundamentals}, for example. The working context for this document that you have a set of extracts from a relational database, in other words, this step has been done.
-
-\subsection{Use Case Data}
-Your \emph{Use Case Data} is what you want to convert to a graph. The data for your use case is a set of extracts that correspond to the entities and their relationships. As a modeler, you are expected to know:
-\begin{itemize}
-    \item  The semantic abstractions relevant to your use case. These are the \emph{entities} in your data extract. You should spend sometime to develop a clear understanding of the entities in your use case.
-    \item The \emph{semantic relationships} in your usecase. You should understand how \emph{entities} in your usecase are related. You should spend sometime to understand the variations that are relevant from the perspective of your use case. 
-    \item The \emph{semantic to extract mapping} for your usecase. You should know which extract file correspond to a particular entity or relationship. The extracts are what you get from the relational databases supplying the data for your use case. As an extension, we can look at connectors that fetch data from source relational systems, but for now we will assume you have file extracts of relations and entities.  Extract to semantic mapping may be a multi-step process. For example, you may need to join two or more extracts to get the data for a particular entity. You should spend sometime to understand how the extracts map to the entities and relationships in your use case. Also you may need to transform the data in the extracts to get the data for a particular entity or relationship. You should spend sometime to understand how the extracts map to the entities and relationships in your use case. 
-\end{itemize}
-
-\subsection{Analysis}\label{sec: analysis}
-The use case under consideration seeks to accomplish a set of business goals. Use case implementation needs to be informed by a set of data analysis tasks. Identifying heterogeneity in your data, as it pertains to your use case objectives, is often one of the first analysis steps. Assessment for heterogeneity is asking if all parts of your dataset are similar or homogeneous. For example, in a financial dataset, you may have data from different lines of business, different product categories, or different geographic regions. Each of these segments may have different characteristics that need to be accounted for in your analysis. For example, if your use case forecasts revenue or demand for a product or service for a particular line of business, the variables that go into the model and statistical characteristics of the quantity you are trying to model may be different for each line of business. Heterogeneity is a fact of life in business data. If there is no heterogeneity then \emph{Independent and Identically Distributed (IID)} assumptions may be valid and you can use standard statistical and machine learning methods. 
-Heterogeneity identification is one of the tasks that you will typically need to perform for analytics and machine learning tasks with business data. The level of dilligence and rigor to identify heterogeneity falls in a spectrum, from simple visual inspection of histograms and densities of the variables of interest to formal \emph{Analysis of Variance} tests on hypothesis about these variables. At a minimum, you will want to do basic visual inspection of histograms and perhaps simple cluster analysis to understand the distribution of variables in your dataset.
-
-Usually a use case will have multiple performance evaluation metrics. You will typically need to understand how your data shapes these metrics. The repository includes an analysis of loan performance data from the Small Business Administration (SBA). In this use case, there are two performance metrics of interest: \emph{recall} and \emph{precision}. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_loans_desc_analysis.pdf}{this document} for details. The analysis of the data is done from the perspective of these two metrics. 
-
-Sometimes design choices that are optimal for one metric may adversely affect another important metric, trade offs and prioritization are typically involved in these situations. For example, in the SBA loan performance use case, increasing recall may come at the cost of decreasing precision. What is acceptable for your use case. This should be done in collaboration with domain experts. Clearly, the above discussion is high level. The details of the analysis will depend on the use case.
-
-Attribute selection and feature engineering are also important analysis tasks. The details of these tasks will depend on the use case. At a minimum, you will want to do the following:
-\begin{itemize}
-    \item Feature Selection: Identify the attributes that are relevant to your use case. This can be done using domain knowledge or by using statistical methods such as correlation analysis or mutual information.
-    \item Categorical Variable Analysis: If you have categorical variables, you will need to understand the level of support for each category. You may need to group categories with low support into another category or drop them from the dataset.
-    \item Missing Value Analysis: You will need to understand the extent of missing values in your dataset. You may need to impute missing values or drop records with missing values.
-    \item Categorical Variable Encoding: You will need to encode categorical variables into a format that can be used by machine learning algorithms. This can be done using various encoding techniques such as one-hot encoding, label encoding, target encoding etc.
-    \item Numeric Variable Transformation: You may need to transform numeric variables to improve their distribution.
-    \item Dimensionality Reduction: If you have a large number of features, you may need to reduce the dimensionality of your dataset. This can be done using techniques such as Principal Component Analysis (PCA) or a manifold learning technique.
-    \item Attribute Creation: You may need to create new attributes from existing attributes. For example, you may want to create a new attribute that is the ratio of two existing attributes. In some cases, you may want to create interaction terms between two or more attributes.
-\end{itemize}
-
-Usually, you don't get to your desired level of analysis in one step. In supervised problems, you will need to consider different modeling approaches, usaually starting with simple models and then moving to more complex models. Understanding the relationship between features and the model target is a critical part of the analysis. This will drive your decision about the type of model you want to use. This is where concepts like \emph{bias-variance tradeoff} come into play. You will need to understand the tradeoff between model complexity and model performance. You will also need to understand the tradeoff between model interpretability and model performance. This is typically done in collaboration with domain experts.
-
-In unsupervised problems, you will need to consider different modeling approaches to arrive at a meaningful representation of your data. For example there are no simple answers to the following questions:
-\begin{itemize}
-    \item How many clusters are there in your data?
-    \item What is the right distance metric to use for clustering?
-    \item What is the right dimensionality reduction technique to use for your data?
-    \item What is the right number of dimensions to use for your data?
-    \item Is a Euclidean assumption valid for your data? Do I need to consider a manifold learning technique?
-\end{itemize}
-
-Of course, some questions may be relevant to both supervised and unsupervised problems. For example, \emph{Is a Euclidean assumption valid for your data? Do I need to consider a manifold learning technique?} is relevant to both supervised and unsupervised problems. Is the data sparse or dense? is another question that is relevant to both supervised and unsupervised problems. Sparse data may require different modeling approaches compared to dense data.
-
-This is where descriptive analytics is really useful. By taking the time to understand the critical questions about your data, you will be able to make informed decisions about the type of model you want to use.
-
-
-\subsection{Model Building and Operationalization}
-When analysis is complete, we have a plan for how data is going to be processed and fed as input to models. Interpretation and presentation of model outputs is also determined in the analysis step. 
-Operationalizing the model and monitoring the model is the next step. This is typically done by an MLOps team. This is outside the scope of this document.
-
 \section{Guidelines for Implementation}
 The implementation consists of an initial assessment of the data, analysis for heterogeneity and a graph mapping. The guidelines for performing these steps are given below. 
 
 \subsection{Initial Assessment}
 The initial assessment is done on the raw data obtained from the source systems. For the initial assessment, use a \texttt{jupyter notebook} to do the following:
 
-\begin{itemize}
-    \item Inspection of Dataset: This is a quality assessment of the extracts you received for the entities and the relations. For each entity, verify that you have the required attributes in the extract. Make note of the desired attributes, you will need this to define the workflow to process the dataset.
-    \item A \emph{critical} point to note and understand at this point is the nature of analysis the use case is performing, i.e., are you doing a \emph{Cross-Sectional, Longitudinal or Panel} study. 
-    \item Be clear about your perspective on heterogeneity in the data. You are typically in one of three situations:
-    \begin{enumerate}
-        \item You have domain expertise about sources of heterogeneity in the data. You don't need to do any data-driven analysis to identify sources of heterogeneity.
-        \item You don't have domain expertise about sources of heterogeneity in the data. You need to do data-driven analysis to identify sources of heterogeneity. You need to get this validated by domain experts.
-        \item You believe that business conditions have changed and you need to identify new sources of heterogeneity in the data. You need to do data-driven analysis to identify sources of heterogeneity. You need to get this validated by domain experts.
-    \end{enumerate}
-    
-    \item Understand and document the business rules that must be satisfied in your final data representation.For example, if you have a finish time and a start time, you may want to verify that the finish time is no earlier than the start time. On financial data, signs, value-ranges etc., may need verification. Make note of how the business rules must be verified and how non-conforming records can be flagged, logged and dropped from the dataset.
-    
-    \item If you need numeric features for heterogeneity analysis, then you might want to featurize the dataset. If, for example you need to use clustering to group data into similar subsets, then you need to perform featurization where data for each entity chain is completely numeric. If you want to rely on segmentation, which translates to a group-by operation, to identify heterogeneity, you don't need to featurize at this point. So when you want to featurize a dataset will depend on how you want to do heterogeneity analysis.
-\end{itemize}
 
-The note comments in each of the steps above will be used to guide further processing. A resource that is old but still relevant is \cite{pyle1999data}. The book provides a good overview of data preparation tasks.
+\begin{enumerate}
+    \item Data Sourcing: Work with the data engineering team to understand how to get extracts from the source relational systems. Understand the data extraction process and the frequency of data extraction. Understand the data formats and the schema of the extracts. The data that you will source will be an estimate based on human judgement and understanding of what your use case aims to accomplish. This will be refined in subsequent analysis. Document the rationale for the estimate and the assumptions in a knowledge management system.
+    \item Data Profiling: Perform data profiling on the extracts to understand the data quality. Identify missing values, outliers, and inconsistencies in the data. Document your findings in a knowledge management system.
+    \item Data Selection: Based on your understanding of the use case, use an appropriate set of techniques, for example, feature selection techniques, to select the relevant data for your use case. Document your rationale for data selection in a knowledge management system. 
+    \item Data Cleaning: Perform data cleaning to address the issues identified in the data profiling step. This may include handling missing values, removing outliers, and correcting inconsistencies in the data. Document your data cleaning process in a knowledge management system.
+    \item Data Transformation: Perform data transformation to convert the data into a format suitable for analysis. This may include normalization, aggregation, and encoding categorical variables. Document your data transformation process in a knowledge management system.
+    \item Data Exploration: Perform exploratory data analysis to understand the characteristics of the data. This may include visualizations, summary statistics, and correlation analysis. The purpose of this step is to develop an initial understanding of the data and formulate a modeling plan. Document your findings in a knowledge management system.
+    \item Modeling Plan: Develop a preliminary modeling plan based on your understanding of the use case and the data. Document your modeling plan in a knowledge management system. The purpose of this document is to provide guidelies to prepare a graph model from relational data. The kind of graph model that you want to create is a key activity in this step. Please see the section \ref{sec: graph structure} for guidelines related to performing this step.
+    \item Communication Plan: Identify the stakeholders for your use case and develop a communication plan to get validation and feedback on your modeling results.  Key performance indicators (KPIs) for the use case and how they relate to the model metrics should also be documented. Document your communication plan in a knowledge management system. This plan should include the frequency and format of communication with stakeholders.
+\end{enumerate}
 
-\subsection{Heterogeneity Analysis} \label{sec: heterogeneity analysis}
+A resource that is old but still relevant for a detailed discussion of the above steps is \cite{pyle1999data}. The book provides a good overview of data preparation tasks.
+
+
 
 
 \subsection{Graph Mapping} \label{sec: graph structure}
-The challenge you are likely to face is the decision about how to map the source entities and relationships to a graph structure. There are three common analysis themes relating to graph structure that we frequently encounter in enterprise applications. The first theme corresponds to a \emph{homogeneous graph}. In such a graph, the nodes are the same type of entity. In these graphs there is a \emph{pivotal entity} that is the focus of the analysis. For example, in a financial use case, the pivotal entity may be a \emph{customer}. In a health care use case, the pivotal entity may be a \emph{patient}. In a manufacturing use case, the pivotal entity may be a \emph{machine}. The analysis task is to understand the behavior of the pivotal entity. Understanding the behaviour of the pivotal entity is a major application of graph analysis in enterprise use cases. Please see \cite{faloutsos2015ubm1} and \cite{faloutsos2015ubm2} for a detailed discussion. When you want to connect two entities from the perspective of identifying heterogeneity in the relationship between the two entities (normal and anomalous behavior can be regarded as one example of this), then using a similarity measure or a distance metric to connect the two entities is a reasonable approach. 
+\cite{faloutsos2015ubm1} and \cite{faloutsos2015ubm2} provide a comprehensive discussion of some of the most common applications of graphs in enterprise applications. There are three common analysis themes relating to graph structure that we frequently encounter in enterprise applications. The first theme corresponds to a \emph{homogeneous graph}. In such a graph, the nodes are the same type of entity. In these graphs there is a \emph{pivotal entity} that is the focus of the analysis. For example, in a financial use case, the pivotal entity may be a \emph{customer}. In a health care use case, the pivotal entity may be a \emph{patient}.The analysis task typically involves predicting a property or an edge connecting these entities in the supervised learning scenario. Clustering of these entities is a common unsupervised learning scenario. If your use case is centered around a pivotal entity like a user, customer or patient, then this is a model you should consider.
 
-Another frequently encountered theme is the analysis of a \emph{binary relationship}. For example, in a retail use case, we may be interested in understanding the relationship between \emph{customer} and \emph{product}. In a health care use case, we may be interested in understanding the relationship between \emph{patient} and \emph{treatment}. In a manufacturing use case, we may be interested in understanding the relationship between \emph{machine} and \emph{operator}. In such cases, we may want to use a graph structure that is centered around the two entities of interest. This is also a heterogeneous graph structure where the nodes are different types of entities. Specifically, this type of graph is a \emph{bipartite} graph. Understanding how a pivotal entity interacts with another entity is a common analysis task in enterprise use cases. See \cite{kunegis2015exploiting} for a detailed discussion of theory and applications of bipartite graphs. Personalization is also common motivation for this type of analysis. See \cite{mcauley2022personalized} for a detailed discussion of personalization.
+The second frequently encountered theme in graph applications is the analysis of a \emph{binary relationship}. In these applications the focus is on how two entities interact. THe analysis task is typically to extract patterns of such interactions. For example, in a retail use case, we may be interested in understanding the relationship between \emph{customer} and \emph{product}. In a health care use case, we may be interested in understanding the relationship between \emph{patient} and \emph{treatment}. In a manufacturing use case, we may be interested in understanding the relationship between \emph{machine} and \emph{operator}. In such cases, we may want to use a graph structure that is centered around the two entities of interest. This type of graph is a \emph{bipartite} graph. See \cite{kunegis2015exploiting} for a detailed discussion of theory and applications of bipartite graphs. Personalization is also common motivation for this type of analysis. Summarizing the entity interactions so that you can develop personalization features is a common application task. \emph{Machine learning for Personalization} is an emerging field, see \cite{mcauley2022personalized} for a detailed discussion of applications and techniques. If your use case is centered around understanding the interaction between two entities, or developing personalization features, then this is a model you should consider.
 
 Finally, the third common theme we counter is a small set of connected entities and relationships. The analysis tasks in this case are typically understanding the behavior of or trying to predict:
 \begin{enumerate}
-    \item The property of an specific entity
-    \item The property of a relationship between two entities
-    \item The property of a collection of entities
+    \item The property of an specific entity (\emph{node classification})
+    \item The property of a relationship between two entities (\emph{link prediction})
+    \item The property of a collection of entities (\emph{graph classification})
 \end{enumerate}
 
-For these problems, we can map the source entities and relationships to a graph structure that replicates the entity relationships in the source system. This is a heterogeneous graph structure where the nodes are different types of entities. The edges are the relationships between the entities. The tasks described above correspond to \emph{node classification}, \emph{link prediction} and \emph{graph classification} tasks in the graph learning literature. See \cite{zhou2020graph} for a detailed discussion. For a detailed discussion of graph representation learning, please see \cite{hamilton2020graph}.
+For these problems, we can map the source entities and relationships to a graph structure that replicates the entity relationships in the source system. See \cite{schlichtkrull2018modeling} for the modeling approach and examples. In fact, learning on graphs with this setting is the focus of \emph{Statistical Relational Learning}. \cite{getoor2007introduction} provides a detailed introduction to this area. The graphs corresponding to this analysis theme have different node types and an edge connects different node types. These type of graphs are called \emph{heterogeneous graphs}.\emph{Graph Neural Networks}, the use of neural networks to solve machine learning problems on graphs is another popular solution approach for the problems discussed in this sections, see \cite{hamilton2020graph} and \cite{zhou2020graph} for details. 
 
-The analysis themes discussed above are by no means exhaustive. These are just the common themes that we have observed in enterprise use cases. Graphs have been used in many other ways to solve a variety of problems in engineering and science. For a discussion of other applications, for example to science and engineering, please see \cite{cook2006mining}. 
+The analysis themes discussed above are by no means exhaustive. These are just the common themes that we have observed in enterprise use cases. Graphs have been used in many other ways to solve a variety of problems in engineering and science. For a discussion of other applications, for example to science and engineering, please see \cite{cook2006mining}. In many niche applications, such as fraud detection or de-duplication, the graph structure is evident from the problem statement itself. This document focuses on the common themes that we have observed in enterprise use cases.
 
-The analysis for heterogeneity is typically different for each of these three themes. Please see the examples section for some illustrative techniques. \emph{Graphs do make it easier to account for heterogeneity in the analysis. This is primarily because most analysis methods consider a neighborhood of a node to predict a property or an edge connected to the node. The neighborhood of a node captures the heterogeneity information related to the node.} There is some upfront work to create the graph, but once the graph is created, the huge body of work on graph analysis can be brought to bear on the problem.
-
-
-\section{Knowledge Graph Construction}
+\subsection{Knowledge Graph Construction}
 
 A review of the document so far will show that there are several steps in the production of a graph from relational data where modeler has to make decisions and choices. The modeler has to understand the use case, the data, the sources of heterogeneity in the data and the type of analysis that is required for the use case. The modeler also has to understand the different types of graph structures and their suitability for different types of analysis.
 
 Knowledge graphs make it possible to capture the decisions and choices made by the modeler in a structured way. \emph{Knowledge Management for Data Science (KMDS)} is a framework for capturing the decisions and choices made by the modeler in a structured way. The framework is implemented in Python and is available as an open source project on GitHub \cite{kmds2025}.  This framework needs work to integrate it with LLM tools.
 
 However, the integration of KMDS with the steps outlined in this document is a work in progress. KMDS is mentioned here to highlight the importance of capturing the decisions and choices made by the modeler in a structured way.
+
+\subsection{Modeling Result Review}
+
+\subsection{Modeling Result Communication}
+
+\subsection{Modeling Refinement Planning}
+
+
 
 \section{Examples of Implementation}
 
@@ -171,8 +113,32 @@ The third common theme we counter is a small set of connected entities and relat
 @book{getoor2007introduction,
 A complete example of heterogeneous graph construction and analysis for node classification is provided in \href{https://www.sciencedirect.com/science/article/pii/S2666827021001195}{this article}\cite{helpdeskgcnsambasivan2022predicting}. For guidelines and theoretical background for heterogeneous graph construction from relational data, please see \cite{schlichtkrull2018modeling}. For a comprehensive introduction to learning graphs from relational data, please see \cite{getoor2007introduction}.
 
-
-
-
 \printbibliography
+
+\section*{Appendix: Vocabulary and Definitions}
+
+
+\subsection*{The Relational Model}
+\cite{codd1970relational} introduced the relational model, which is the logical foundation for relational databases. In this model, data is represented as relations (tables), where each relation consists of tuples (rows) and attributes (columns). An algebraic framework for manipulating these relations is provided by relational algebra, which includes binary operations (operate on two relations) such as join and union, as well as unary operations like selection and projection (operate on a single relation). The relational model provides a mathematical framework for representing and querying data.
+
+\subsection*{The Entity-Relationship Model}
+The entity-relationship (ER) model, introduced by \cite{chen1976entity} is a framework for describing the \emph{semantic} data abstractions and their relationship with each other. For example, if your use case is about how students in a university register for courses, then \emph{students, course, registration} might be a set of data abstractions. The \emph{registration} may connect a student with a course for a particular semester. From a \emph{data representation} point of view, all semantic abstractions may be represented as relations.
+\subsection{The Entity-Relationship to Relational Schema Mapping}\label{sec: er to rel}
+There exist guidelines and a body of knowledge around mapping an \emph{Entity-Relationship Model} to a \emph{Relational Schema}. See \cite{elmasri2016fundamentals}, for example. The working context for this document that you have a set of extracts from a relational database, in other words, this step has been done.
+
+\subsection*{Use Case Data}
+Your \emph{Use Case Data} is what you want to convert to a graph. The data for your use case is a set of extracts that correspond to the entities and their relationships. As a modeler, you are expected to know:
+\begin{itemize}
+    \item  The semantic abstractions relevant to your use case. These are the \emph{entities} in your data extract. You should spend sometime to develop a clear understanding of the entities in your use case.
+    \item The \emph{semantic relationships} in your usecase. You should understand how \emph{entities} in your usecase are related. You should spend sometime to understand the variations that are relevant from the perspective of your use case. 
+    \item The \emph{semantic to extract mapping} for your usecase. You should know which extract file correspond to a particular entity or relationship. The extracts are what you get from the relational databases supplying the data for your use case. As an extension, we can look at connectors that fetch data from source relational systems, but for now we will assume you have file extracts of relations and entities.  Extract to semantic mapping may be a multi-step process. For example, you may need to join two or more extracts to get the data for a particular entity. You should spend sometime to understand how the extracts map to the entities and relationships in your use case. Also you may need to transform the data in the extracts to get the data for a particular entity or relationship. You should spend sometime to understand how the extracts map to the entities and relationships in your use case. 
+\end{itemize}
+
+
+\subsection*{Model Building and Operationalization}
+When analysis is complete, we have a plan for how data is going to be processed and fed as input to models. Interpretation and presentation of model outputs is also determined in the analysis step. 
+Operationalizing the model and monitoring the model is the next step. This is typically done by an MLOps team. This is outside the scope of this document.
+
+
+
 \end{document}
