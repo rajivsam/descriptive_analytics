@@ -22,7 +22,6 @@ PyWavelets
 pydot
 cvxopt
 cvxpy
-geobr
 category-encoders
 xgboost
 PyNomaly
@@ -30,3 +29,7 @@ openpyxl
 gower-multiprocessing
 jenkspy
 skrub
+kmds
+owlready2
+rdflib
+importlib-resources

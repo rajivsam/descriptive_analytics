@@ -36,6 +36,8 @@ In \emph{Panel Data}, you need to account for sources of variation you have obse
 
 
 \section{Guidelines for Implementation}
+This section provides guidelines for implementing the transformation of relational data into graph structures. Definitions of key terms used in this section are provided in the Appendix.
+
 The implementation consists of an initial assessment of the data, analysis for heterogeneity and a graph mapping. The guidelines for performing these steps are given below. 
 
 \subsection{Initial Assessment}
@@ -56,9 +58,9 @@ The initial assessment is done on the raw data obtained from the source systems.
 A resource that is old but still relevant for a detailed discussion of the above steps is \cite{pyle1999data}. The book provides a good overview of data preparation tasks.
 
 
-
-
 \subsection{Graph Mapping} \label{sec: graph structure}
+When you sit down to develop a modeling plan, you need to decide on the type of graph structure that is suitable for your use case. The choice of graph structure depends on the type of analysis you want to perform. This section discusses some common graph structures and their suitability for different types of analysis.
+
 \cite{faloutsos2015ubm1} and \cite{faloutsos2015ubm2} provide a comprehensive discussion of some of the most common applications of graphs in enterprise applications. There are three common analysis themes relating to graph structure that we frequently encounter in enterprise applications. The first theme corresponds to a \emph{homogeneous graph}. In such a graph, the nodes are the same type of entity. In these graphs there is a \emph{pivotal entity} that is the focus of the analysis. For example, in a financial use case, the pivotal entity may be a \emph{customer}. In a health care use case, the pivotal entity may be a \emph{patient}.The analysis task typically involves predicting a property or an edge connecting these entities in the supervised learning scenario. Clustering of these entities is a common unsupervised learning scenario. If your use case is centered around a pivotal entity like a user, customer or patient, then this is a model you should consider.
 
 The second frequently encountered theme in graph applications is the analysis of a \emph{binary relationship}. In these applications the focus is on how two entities interact. THe analysis task is typically to extract patterns of such interactions. For example, in a retail use case, we may be interested in understanding the relationship between \emph{customer} and \emph{product}. In a health care use case, we may be interested in understanding the relationship between \emph{patient} and \emph{treatment}. In a manufacturing use case, we may be interested in understanding the relationship between \emph{machine} and \emph{operator}. In such cases, we may want to use a graph structure that is centered around the two entities of interest. This type of graph is a \emph{bipartite} graph. See \cite{kunegis2015exploiting} for a detailed discussion of theory and applications of bipartite graphs. Personalization is also common motivation for this type of analysis. Summarizing the entity interactions so that you can develop personalization features is a common application task. \emph{Machine learning for Personalization} is an emerging field, see \cite{mcauley2022personalized} for a detailed discussion of applications and techniques. If your use case is centered around understanding the interaction between two entities, or developing personalization features, then this is a model you should consider.
@@ -123,7 +125,8 @@ A complete example of heterogeneous graph construction and analysis for node cla
 
 \subsection*{The Entity-Relationship Model}
 The entity-relationship (ER) model, introduced by \cite{chen1976entity} is a framework for describing the \emph{semantic} data abstractions and their relationship with each other. For example, if your use case is about how students in a university register for courses, then \emph{students, course, registration} might be a set of data abstractions. The \emph{registration} may connect a student with a course for a particular semester. From a \emph{data representation} point of view, all semantic abstractions may be represented as relations.
-\subsection{The Entity-Relationship to Relational Schema Mapping}\label{sec: er to rel}
+
+\subsection*{The Entity-Relationship to Relational Schema Mapping}\label{sec: er to rel}
 There exist guidelines and a body of knowledge around mapping an \emph{Entity-Relationship Model} to a \emph{Relational Schema}. See \cite{elmasri2016fundamentals}, for example. The working context for this document that you have a set of extracts from a relational database, in other words, this step has been done.
 
 \subsection*{Use Case Data}
