@@ -1,5 +1,4 @@
 \documentclass{article}
-
 \usepackage{graphicx}
 \usepackage[backend=biber, style=numeric]{biblatex}
 \addbibresource{bibliography/ref-rel-graph-concepts.bib}
@@ -40,7 +39,7 @@ This section provides guidelines for implementing the transformation of relation
 
 The implementation consists of an initial assessment of the data, analysis for heterogeneity and a graph mapping. The guidelines for performing these steps are given below. 
 
-\subsection{Initial Assessment}
+\subsection{Initial Assessment} \label{sec:initial_assessment}
 The initial assessment is done on the raw data obtained from the source systems. For the initial assessment, use a \texttt{jupyter notebook} to do the following:
 
 
@@ -49,7 +48,7 @@ The initial assessment is done on the raw data obtained from the source systems.
     \item Data Profiling: Perform data profiling on the extracts to understand the data quality. Identify missing values, outliers, and inconsistencies in the data. Document your findings in a knowledge management system.
     \item Data Selection: Based on your understanding of the use case, use an appropriate set of techniques, for example, feature selection techniques, to select the relevant data for your use case. Document your rationale for data selection in a knowledge management system. 
     \item Data Cleaning: Perform data cleaning to address the issues identified in the data profiling step. This may include handling missing values, removing outliers, and correcting inconsistencies in the data. Document your data cleaning process in a knowledge management system.
-    \item Data Transformation: Perform data transformation to convert the data into a format suitable for analysis. This may include normalization, aggregation, and encoding categorical variables. Document your data transformation process in a knowledge management system.
+    \item Data Transformation: Perform data transformation to convert the data into a format suitable for analysis. This may include normalization, aggregation, and encoding categorical variables. Document your data transformation process in a knowledge management system. Please see \cite{kuhn2013applied} and \cite{bookdownFeatureEngineering} for detailed guidelines on data transformation techniques.
     \item Data Exploration: Perform exploratory data analysis to understand the characteristics of the data. This may include visualizations, summary statistics, and correlation analysis. The purpose of this step is to develop an initial understanding of the data and formulate a modeling plan. Document your findings in a knowledge management system.
     \item Modeling Plan: Develop a preliminary modeling plan based on your understanding of the use case and the data. Document your modeling plan in a knowledge management system. The purpose of this document is to provide guidelies to prepare a graph model from relational data. The kind of graph model that you want to create is a key activity in this step. Please see the section \ref{sec: graph structure} for guidelines related to performing this step.
     \item Communication Plan: Identify the stakeholders for your use case and develop a communication plan to get validation and feedback on your modeling results.  Key performance indicators (KPIs) for the use case and how they relate to the model metrics should also be documented. Document your communication plan in a knowledge management system. This plan should include the frequency and format of communication with stakeholders.
@@ -58,7 +57,7 @@ The initial assessment is done on the raw data obtained from the source systems.
 A resource that is old but still relevant for a detailed discussion of the above steps is \cite{pyle1999data}. The book provides a good overview of data preparation tasks.
 
 
-\subsection{Graph Mapping} \label{sec: graph structure}
+\subsection{Graph Mapping} \label{sec: graph mapping}
 When you sit down to develop a modeling plan, you need to decide on the type of graph structure that is suitable for your use case. The choice of graph structure depends on the type of analysis you want to perform. This section discusses some common graph structures and their suitability for different types of analysis.
 
 \cite{faloutsos2015ubm1} and \cite{faloutsos2015ubm2} provide a comprehensive discussion of some of the most common applications of graphs in enterprise applications. There are three common analysis themes relating to graph structure that we frequently encounter in enterprise applications. The first theme corresponds to a \emph{homogeneous graph}. In such a graph, the nodes are the same type of entity. In these graphs there is a \emph{pivotal entity} that is the focus of the analysis. For example, in a financial use case, the pivotal entity may be a \emph{customer}. In a health care use case, the pivotal entity may be a \emph{patient}.The analysis task typically involves predicting a property or an edge connecting these entities in the supervised learning scenario. Clustering of these entities is a common unsupervised learning scenario. If your use case is centered around a pivotal entity like a user, customer or patient, then this is a model you should consider.
@@ -66,6 +65,7 @@ When you sit down to develop a modeling plan, you need to decide on the type of 
 The second frequently encountered theme in graph applications is the analysis of a \emph{binary relationship}. In these applications the focus is on how two entities interact. THe analysis task is typically to extract patterns of such interactions. For example, in a retail use case, we may be interested in understanding the relationship between \emph{customer} and \emph{product}. In a health care use case, we may be interested in understanding the relationship between \emph{patient} and \emph{treatment}. In a manufacturing use case, we may be interested in understanding the relationship between \emph{machine} and \emph{operator}. In such cases, we may want to use a graph structure that is centered around the two entities of interest. This type of graph is a \emph{bipartite} graph. See \cite{kunegis2015exploiting} for a detailed discussion of theory and applications of bipartite graphs. Personalization is also common motivation for this type of analysis. Summarizing the entity interactions so that you can develop personalization features is a common application task. \emph{Machine learning for Personalization} is an emerging field, see \cite{mcauley2022personalized} for a detailed discussion of applications and techniques. If your use case is centered around understanding the interaction between two entities, or developing personalization features, then this is a model you should consider.
 
 Finally, the third common theme we counter is a small set of connected entities and relationships. The analysis tasks in this case are typically understanding the behavior of or trying to predict:
+
 \begin{enumerate}
     \item The property of an specific entity (\emph{node classification})
     \item The property of a relationship between two entities (\emph{link prediction})
@@ -77,31 +77,42 @@ For these problems, we can map the source entities and relationships to a graph 
 The analysis themes discussed above are by no means exhaustive. These are just the common themes that we have observed in enterprise use cases. Graphs have been used in many other ways to solve a variety of problems in engineering and science. For a discussion of other applications, for example to science and engineering, please see \cite{cook2006mining}. In many niche applications, such as fraud detection or de-duplication, the graph structure is evident from the problem statement itself. This document focuses on the common themes that we have observed in enterprise use cases.
 
 \subsection{Knowledge Graph Construction}
-
-A review of the document so far will show that there are several steps in the production of a graph from relational data where modeler has to make decisions and choices. The modeler has to understand the use case, the data, the sources of heterogeneity in the data and the type of analysis that is required for the use case. The modeler also has to understand the different types of graph structures and their suitability for different types of analysis.
-
-Knowledge graphs make it possible to capture the decisions and choices made by the modeler in a structured way. \emph{Knowledge Management for Data Science (KMDS)} is a framework for capturing the decisions and choices made by the modeler in a structured way. The framework is implemented in Python and is available as an open source project on GitHub \cite{kmds2025}.  This framework needs work to integrate it with LLM tools.
-
-However, the integration of KMDS with the steps outlined in this document is a work in progress. KMDS is mentioned here to highlight the importance of capturing the decisions and choices made by the modeler in a structured way.
+As you work through the initial assement using the guidelines above, you will be making decisions based on the data that you have received. You may want to consider constructing a knowledge graph to capture this so that a maintainer of the model has a tool that inserts rationale at every decision point that explains the decision. \emph{Knowledge Management for Data Science} (KMDS) \cite{kmds2025} is python library that provides tools for constructing and maintaining knowledge graphs for data science projects. The ontology for the knowledge graph captures the activities that are described in section \ref{sec:initial_assessment}. The tool offers functionality for capturing the activities duiring the analysis and operationalization phases of the data science lifecycle, please see \href{https://github.com/rajivsam/KMDS/blob/main/examples_of_use/workflow_recipe.md}{this document}. The recipe and the guidelines capturing the activities as part of an analysis workflow (called the \emph{experiment based pipeline} in the documentation) are provided in \href{https://github.com/rajivsam/KMDS/blob/main/feature_documentation/km_app_pipeline.md}{this document}. Section \ref{sec:examples_of_implementation} provides an example of how to use KMDS to capture the graph construction process.
 
 \subsection{Modeling Result Review}
+When you have developed a modeling plan, reviewed the plan with stakeholders and have implemented the plan (selecting a graph model using the guidelines presented in section \ref{sec: graph mapping}), you will need to review the results and interpret them. The following two subsections provide guidelines for performing these tasks. Before you start these tasks, you will need to do the following:
+\begin{enumerate}
+\item Interpret the model metrics in the context of the use case KPIs.
+\item Summarize the modeling guidelines for the current iteration. This would include level of feature engineering, model selection rationale, hyperparameter tuning approach and model validation approach.
+\item Document the limitations of the current modeling approach. 
+\item Group results by stakeholder groups. Communicate implications of the results for each stakeholder group. A business stakeholder may be concerned with business impact and risks. A technical stakeholder may be concerned with model performance and operationalization. Make sure the right graphics and visualizations are used for each stakeholder group and reflect their concerns.
+\item Develop a proposal for model assement for each stakeholder group.
+\end{enumerate}
 
 \subsection{Modeling Result Communication}
+Disseminate your modeling results to stakeholders using the communication plan developed during the initial assessment phase. Work through questions and feedback from stakeholders. Document the feedback in a knowledge management system.
 
 \subsection{Modeling Refinement Planning}
+Based on the feedback from stakeholders, develop a plan for refining the model. Based on the scope of the refinement, you may need buy in from project sponsors. Develop a refinement plan and develop the modeling plan for the next iteration. Document the refinement plan in a knowledge management system.
+
+\section{Examples of Implementation}\label{sec:examples_of_implementation}
+
+\subsection{Homogeneous Graphs}
+An example of using a \emph{homogeneous} graph is provided with the data published by the U.S. Small Business Administration (SBA) on 7a loans. The data contains information about loans provided to small businesses by SBA approved lenders. The data contains information about the borrower, the loan amount, the purpose of the loan, the location of the business, and other relevant information. In this example, we develop models that explain the default behaviour of borrowers. There are three components to the analysis:
+\begin{enumerate}
+    \item Develop a supervised learning model to predict loan default.
+    \item A key predictive feature is the proximity of a borrower to other borrowers that have defaulted. Similaity, or equivalently, the counterpart, dissimilarity is a key concept in this analysis. The key idea here is to construct a similarity be tween borrowers based on their characteristics. This similarity is then used to construct a graph where the nodes are borrowers and the edges represent similarity between borrowers. Please see \cite{levy2024guide} for a recent survey of similarity measures. A clustering of the subgraph representing the neighbors of a borrower is the second component of the analysis.
+    \item The analysis required to identify a threshold probablity of default that is used to classify borrowers as good or bad forms the third component of the analysis. Bad borrowers are close to other bad borrowers in the similarity graph. By knowing the properties of a bad borrower, we can use the model developed in the previous step to assign the credit worthiness of this borrower.
+\end{enumerate}
+
+Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_loans_desc_analysis.pdf}{this document} for details of developing a supervised learning model for predicting loan default. The details of the graph construction and the clustering analysis are provided in \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_good_borrower.pdf}{this document}.
 
 
 
-\section{Examples of Implementation}
 
-\subsection{Homogeneous Graph Construction for Feature Engineering}
-Graphs can be used to develop features for a machine learning model. In this example, we consider the problem of developing a representation for good borrowers in the SBA 7a loans dataset. This representation can be used for tasks such as developing a taxonomy of good borrowers. Understanding the heterogeneity of good borrowers can inform the design of new loan products. It can also help identify good borrowers that are similar to bad borrowers. This can help identify potential risks in the loan portfolio. In this example, we represent good borrowers as a graph and then develop a representation for this graph using a spectral embedding technique. The representation can then be used in a machine learning model. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_loans_desc_analysis.pdf}{this document} for details.
+\subsection{Bipartite Graphs}
 
-\subsection{Homogeneous Graph Construction for Representation Learning}
-Graphs can be used to develop a representation for a set of entities. In this example, we consider the problem of developing a representation for good borrowers in the SBA 7a loans dataset. This representation can be used for tasks such as developing a taxonomy of good borrowers. Understanding the heterogeneity of good borrowers can inform the design of new loan products. It can also help identify good borrowers that are similar to bad borrowers. This can help identify potential risks in the loan portfolio. In this example, we represent good borrowers as a graph and then develop a representation for this graph using a spectral embedding technique. The representation can then be used in a machine learning model. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/sba_7a_loans_analysis/sba_7a_good_borrower.pdf}{this document} for details. Note that this example is different from the previous example in that the representation is used for unsupervised learning. There is a single entity of interest, the good borrower. However, a similar approach can be used when multiple entities of interest are present and collaborate to accomplish a task. We will explore this in subsequent examples.
-
-\subsection{Bipartite Graph Construction from Relational Data}
-Bipartite graphs can be used to represent relationships between two types of entities. The page shows an example of using descriptive analytics to understand important characteristics of shopping behavior of customers in a retail setting. One part of the analysis examines the shopping behavior of customers in Sao Paulo, Brazil. A bipartite graph is constructed where the bipartite vertex sets ar the cities in Sau Paulo and the products purchased by customers in these cities. The edges represent the purchase of a product by a customer in a city. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md}{this document} for of the analysis. The details of the bipartite graph construction and the subsequent analysis are provided in \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/temporal_coclustering_SP_2017.pdf}{this document}.
+The second theme commonly encountered in developing a graph model is a \emph{bipartite graph}. Bipartite graphs can be used to represent relationships between two types of entities. The example used for illustration is dervied from an example used to develop \emph{descriptive analytics} on the shopping behavior of a retail store in Brazil. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md}{\cite{olistDescriptiveAnalytics}} for of the analysis. The details of the bipartite graph construction and the subsequent analysis are provided in \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/temporal_coclustering_SP_2017.pdf}{\cite{coclusteringOlist2017}}.
 
 \subsection{Heterogeneous Graph Construction from Relational Data} 
 
@@ -111,9 +122,13 @@ The third common theme we counter is a small set of connected entities and relat
     \item Predict the relationship between two entities, \emph{link prediction}
     \item Predict the label associated with a new set of related entities, \emph{graph classification}
 \end{enumerate}
-@inproceedings{schlichtkrull2018modeling,
-@book{getoor2007introduction,
+
 A complete example of heterogeneous graph construction and analysis for node classification is provided in \href{https://www.sciencedirect.com/science/article/pii/S2666827021001195}{this article}\cite{helpdeskgcnsambasivan2022predicting}. For guidelines and theoretical background for heterogeneous graph construction from relational data, please see \cite{schlichtkrull2018modeling}. For a comprehensive introduction to learning graphs from relational data, please see \cite{getoor2007introduction}.
+
+\subsection{Knowledge Capture with KMDS} \label{sec:kmds_logging}
+The decisions you have made during the initial assessment and graph mapping phases can be captured using KMDS. Please see \href{https://github.com/rajivsam/KMDS/blob/main/feature_documentation/km_app_pipeline.md}{\cite{appworkflowKMDS}} for details on how to use KMDS to capture the decisions you have made during the analysis. KMDS can be used to annotate your \texttt{jupyter notebooks} with the decisions you have made during the analysis. This will help you and your team to maintain the model over time. See \href{https://github.com/rajivsam/kmds_recipes/wiki/Baseline-Data-Quality-Report}{\cite{kmds_recipes}} for an examples of how to use KMDS to annotate your machine learning and analytics workflows. KMDS was used to capture the process outlined in section \ref{sec:initial_assessment} and section \ref{sec: graph mapping} for the SBA 7a loan dataset that was used as an example of homogeneous graph construction. A sketch of how the tool is used for initial assessment and graph mapping is provided here.
+
+
 
 \printbibliography
 
@@ -132,16 +147,13 @@ There exist guidelines and a body of knowledge around mapping an \emph{Entity-Re
 \subsection*{Use Case Data}
 Your \emph{Use Case Data} is what you want to convert to a graph. The data for your use case is a set of extracts that correspond to the entities and their relationships. As a modeler, you are expected to know:
 \begin{itemize}
-    \item  The semantic abstractions relevant to your use case. These are the \emph{entities} in your data extract. You should spend sometime to develop a clear understanding of the entities in your use case.
-    \item The \emph{semantic relationships} in your usecase. You should understand how \emph{entities} in your usecase are related. You should spend sometime to understand the variations that are relevant from the perspective of your use case. 
-    \item The \emph{semantic to extract mapping} for your usecase. You should know which extract file correspond to a particular entity or relationship. The extracts are what you get from the relational databases supplying the data for your use case. As an extension, we can look at connectors that fetch data from source relational systems, but for now we will assume you have file extracts of relations and entities.  Extract to semantic mapping may be a multi-step process. For example, you may need to join two or more extracts to get the data for a particular entity. You should spend sometime to understand how the extracts map to the entities and relationships in your use case. Also you may need to transform the data in the extracts to get the data for a particular entity or relationship. You should spend sometime to understand how the extracts map to the entities and relationships in your use case. 
+    \item  The semantic abstractions relevant to your use case. These are the \emph{entities} in your data extract. You should spend sometime to develop a clear understanding of the entities in your use case. If you don't have a data dictionary for your extracts, you should work with the data engineering team to develop one.
+    \item The \emph{semantic relationships} in your usecase. You should understand how \emph{entities} in your usecase are related. You should develop clear definitions for these relationships. The impact of these relationships on your usecase should also be documented.
+    
 \end{itemize}
 
 
 \subsection*{Model Operationalization}
-When analysis is complete, we have a plan for how data is going to be processed and fed as input to models. Interpretation and presentation of model outputs is also determined in the analysis step. 
-Operationalizing the model and monitoring the model is the next step. This is typically done by an MLOps team. This is outside the scope of this document.
-
-
+When analysis is complete, we have a plan for how data is going to be processed and fed as input to models.  Operationalizing the model and monitoring the model is the next step. This is typically done by an MLOps team. For details on MLOps, please see \cite{mlopsMlopsorg}
 
 \end{document}
