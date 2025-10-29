@@ -34,7 +34,7 @@ In a \emph{longitudinal analysis}, heterogeneity occurs over time. A study where
 In \emph{Panel Data}, you need to account for sources of variation you have observed with both \emph{cross-sectional} and \emph{longitudinal} data. A company may track the purchasing behavior of a set of customers over time. In such cases, you need to account for heterogeneity across customers as well as heterogeneity over time.
 
 
-\section{Guidelines for Implementation}
+\section{Guidelines for Implementation}\label{sec:implementation_guidelines}
 This section provides guidelines for implementing the transformation of relational data into graph structures. Definitions of key terms used in this section are provided in the Appendix.
 
 The implementation consists of an initial assessment of the data, analysis for heterogeneity and a graph mapping. The guidelines for performing these steps are given below. 
@@ -50,7 +50,7 @@ The initial assessment is done on the raw data obtained from the source systems.
     \item Data Cleaning: Perform data cleaning to address the issues identified in the data profiling step. This may include handling missing values, removing outliers, and correcting inconsistencies in the data. Document your data cleaning process in a knowledge management system.
     \item Data Transformation: Perform data transformation to convert the data into a format suitable for analysis. This may include normalization, aggregation, and encoding categorical variables. Document your data transformation process in a knowledge management system. Please see \cite{kuhn2013applied} and \cite{bookdownFeatureEngineering} for detailed guidelines on data transformation techniques.
     \item Data Exploration: Perform exploratory data analysis to understand the characteristics of the data. This may include visualizations, summary statistics, and correlation analysis. The purpose of this step is to develop an initial understanding of the data and formulate a modeling plan. Document your findings in a knowledge management system.
-    \item Modeling Plan: Develop a preliminary modeling plan based on your understanding of the use case and the data. Document your modeling plan in a knowledge management system. The purpose of this document is to provide guidelies to prepare a graph model from relational data. The kind of graph model that you want to create is a key activity in this step. Please see the section \ref{sec: graph structure} for guidelines related to performing this step.
+    \item Modeling Plan: Develop a preliminary modeling plan based on your understanding of the use case and the data. Document your modeling plan in a knowledge management system. The purpose of this document is to provide guidelies to prepare a graph model from relational data. The kind of graph model that you want to create is a key activity in this step. Please see the section \ref{sec: graph mapping} for guidelines related to performing this step.
     \item Communication Plan: Identify the stakeholders for your use case and develop a communication plan to get validation and feedback on your modeling results.  Key performance indicators (KPIs) for the use case and how they relate to the model metrics should also be documented. Document your communication plan in a knowledge management system. This plan should include the frequency and format of communication with stakeholders.
 \end{enumerate}
 
@@ -97,8 +97,8 @@ Based on the feedback from stakeholders, develop a plan for refining the model. 
 
 \section{Examples of Implementation}\label{sec:examples_of_implementation}
 
-\subsection{Homogeneous Graphs}
-An example of using a \emph{homogeneous} graph is provided with the data published by the U.S. Small Business Administration (SBA) on 7a loans. The data contains information about loans provided to small businesses by SBA approved lenders. The data contains information about the borrower, the loan amount, the purpose of the loan, the location of the business, and other relevant information. In this example, we develop models that explain the default behaviour of borrowers. There are three components to the analysis:
+\subsection{Homogeneous Graphs}\label{sec:homogeneous_graph_example}
+If your usecase pivots around one entity, its properties, or its relationships, then you should consider a \emph{homogeneous graph} mapping. An example of using a \emph{homogeneous} graph is provided with the data published by the U.S. Small Business Administration (SBA) on 7a loans. The data contains information about loans provided to small businesses by SBA approved lenders. The data contains information about the borrower, the loan amount, the purpose of the loan, the location of the business, and other relevant information. In this example, we develop models that explain the default behaviour of borrowers. There are three components to the analysis:
 \begin{enumerate}
     \item Develop a supervised learning model to predict loan default.
     \item A key predictive feature is the proximity of a borrower to other borrowers that have defaulted. Similaity, or equivalently, the counterpart, dissimilarity is a key concept in this analysis. The key idea here is to construct a similarity be tween borrowers based on their characteristics. This similarity is then used to construct a graph where the nodes are borrowers and the edges represent similarity between borrowers. Please see \cite{levy2024guide} for a recent survey of similarity measures. A clustering of the subgraph representing the neighbors of a borrower is the second component of the analysis.
@@ -112,11 +112,11 @@ Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/exa
 
 \subsection{Bipartite Graphs}
 
-The second theme commonly encountered in developing a graph model is a \emph{bipartite graph}. Bipartite graphs can be used to represent relationships between two types of entities. The example used for illustration is dervied from an example used to develop \emph{descriptive analytics} on the shopping behavior of a retail store in Brazil. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md}{\cite{olistDescriptiveAnalytics}} for of the analysis. The details of the bipartite graph construction and the subsequent analysis are provided in \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/temporal_coclustering_SP_2017.pdf}{\cite{coclusteringOlist2017}}.
+The second theme commonly encountered in developing a graph model is a \emph{bipartite graph}. If your use case pivots around the analysis of a \emph{pair} of entities and their relationships, you should consider the \emph{bipartite} graph mapping. Bipartite graphs can be used to represent relationships between two types of entities. The example used for illustration is dervied from an example used to develop \emph{descriptive analytics} on the shopping behavior of a retail store in Brazil. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/picture_summary_SP_2017.md}{\cite{olistDescriptiveAnalytics}} for of the analysis. The details of the bipartite graph construction and the subsequent analysis are provided in \href{https://github.com/rajivsam/descriptive_analytics/blob/main/examples/olist_case_study/temporal_coclustering_SP_2017.pdf}{\cite{coclusteringOlist2017}}.
 
 \subsection{Heterogeneous Graph Construction from Relational Data} 
 
-The third common theme we counter is a small set of connected entities and relationships. As part of the input to the analysis, we have the entities and the relationships between the entities. We treat these entities and relationships as a heterogeneous graph. The analysis tasks in this case are typically are:
+The third common theme we counter is a small set of connected entities and relationships. If your use case pivots around a \emph{group} (typically, small, less than five) of entities, and thier relationships, you should consider the \emph{heterogeneous} graph model. As part of the input to the analysis, we have the entities and the relationships between the entities. We treat these entities and relationships as a heterogeneous graph. The analysis tasks in this case are typically are:
 \begin{enumerate}
     \item Predict the property of an specific entity, \emph{node classification}
     \item Predict the relationship between two entities, \emph{link prediction}
@@ -128,8 +128,33 @@ A complete example of heterogeneous graph construction and analysis for node cla
 \subsection{Knowledge Capture with KMDS} \label{sec:kmds_logging}
 The decisions you have made during the initial assessment and graph mapping phases can be captured using KMDS. Please see \href{https://github.com/rajivsam/KMDS/blob/main/feature_documentation/km_app_pipeline.md}{\cite{appworkflowKMDS}} for details on how to use KMDS to capture the decisions you have made during the analysis. KMDS can be used to annotate your \texttt{jupyter notebooks} with the decisions you have made during the analysis. This will help you and your team to maintain the model over time. See \href{https://github.com/rajivsam/kmds_recipes/wiki/Baseline-Data-Quality-Report}{\cite{kmds_recipes}} for an examples of how to use KMDS to annotate your machine learning and analytics workflows. KMDS was used to capture the process outlined in section \ref{sec:initial_assessment} and section \ref{sec: graph mapping} for the SBA 7a loan dataset that was used as an example of homogeneous graph construction. A sketch of how the tool is used for initial assessment and graph mapping is provided here.
 
-\section{Use of Artificial Intelligence Assistants}
+\subsubsection{Data Tasks: Profiling, Cleaning, Transformation and Exploration}
+The data tasks outlined in section \ref{sec:implementation_guidelines} can be captured using KMDS. The logging of the decision and rationale for each step is done using the \texttt{kmds} python package. Please see the following in the order given to understand how to use KMDS for logging data tasks:
+\begin{enumerate}
+    \item Sourcing, Cleaning, Exploration and Profiling: Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/sba_loans.ipynb}{\cite{sba_loans_init_assement}}
+    \item Data Transformation: Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/sba_loan_numeric_enc.ipynb}{\cite{sba_dataset_encoding_data_trans}}
+    \item Data Transformation - Feature Engineering: Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/sba_bad_borr_graph_ctor.ipynb}{\cite{sba_loans_feature_engg}}
+\end{enumerate}
 
+\subsubsection{Model Planning}
+Please see section \ref{sec:homogeneous_graph_example} for details of the modeling plan for the SBA 7a loan dataset. The modeling plan was captured using KMDS. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/sba_bad_loans_classifier.ipynb}{\cite{sba_bad_loans_classifier}} for details of how the modeling plan was captured using KMDS.
+
+\subsubsection{Viewing the Knowledge Graph Sections}
+
+
+\section{Use of Artificial Intelligence Assistants}
+AI assistants such as ChatGPT can be used to assist with the tasks outlined in this document. For example, AI assistants can be used to generate code snippets for data profiling, data cleaning, and data transformation. AI assistants can also be used to generate visualizations for exploratory data analysis. However, it is important to note that AI assistants are not a substitute for human expertise. The use of AI assistants should be complemented with human judgement and domain knowledge. The final decisions should always be made by a human analyst. For over two decades at the time of this writing, companies and individuals have believed that it is possible to point a tool at a datsource and expect a nice robust model to be produced by the tool. To paraphrase \cite{pyle1999data},\begin{quote}
+    \emph{Some companies seem to have the impression that in order to produce effective models,
+knowledge of the data and the problem are not really required, but that the tools will do all
+the work. Where this myth came from is hard to imagine. It is so far from the truth that it
+would be funny if it were not for the fact that major projects have failed entirely due to
+ignorance on the part of the miner. Not that the miner was always at fault. If ordered to
+“find out what is in this data,” an employee has little option but to do something. No one
+who expected to achieve anything useful would approach a lump of unknown substance,
+put on a blindfold, and whack at it with whatever tool happened to be at hand. Why this is
+thought possible with data mining tools is difficult to say!}
+\end{quote}
+Building robust models requires human expertise and judgement. AI assistants can be a useful tool in the data science toolkit, but they should not be relied upon exclusively.
 
 
 \printbibliography
