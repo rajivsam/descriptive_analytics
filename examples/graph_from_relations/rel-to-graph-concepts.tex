@@ -4,7 +4,7 @@
 \addbibresource{bibliography/ref-rel-graph-concepts.bib}
 \usepackage{amsmath,amsthm,amssymb,graphicx,mathtools,hyperref}
 \graphicspath{{../../images/}}
-
+\usepackage{subcaption}
 
  \hypersetup{
  colorlinks,
@@ -140,6 +140,35 @@ The data tasks outlined in section \ref{sec:implementation_guidelines} can be ca
 Please see section \ref{sec:homogeneous_graph_example} for details of the modeling plan for the SBA 7a loan dataset. The modeling plan was captured using KMDS. Please see \href{https://github.com/rajivsam/descriptive_analytics/blob/main/notebooks/sba_bad_loans_classifier.ipynb}{\cite{sba_bad_loans_classifier}} for details of how the modeling plan was captured using KMDS.
 
 \subsubsection{Viewing the Knowledge Graph Sections}
+% Requires \usepackage{subcaption} in the preamble
+\begin{figure}[h!]
+    \centering
+    \vspace*{\fill}
+    \begin{subfigure}[b]{\linewidth}
+        \centering
+        \includegraphics[height=0.30\textheight,keepaspectratio]{sba_kmds_data_activity_logging.png}
+        \caption{Data Activity Logging}
+        \label{sba_dal}
+    \end{subfigure}
+
+    \begin{subfigure}[h!]{\linewidth}
+        \centering
+        \includegraphics[scale=0.35]{sba_kmds_data_trans_logging.png}
+        \caption{Data Transformation Logging}
+        \label{sba_dtl}
+    \end{subfigure}
+
+    \begin{subfigure}[h!]{\linewidth}
+        \centering
+        \includegraphics[scale=0.35]{sba_kmds_model_results_logging.png}
+        \caption{Model Planning and Refinement Logging}
+        \label{sba_marl}
+    \end{subfigure}
+    \vspace*{\fill}
+    \caption{KMDS knowledge-graph sections captured during the SBA analysis}
+    \label{fig:sba_kmds_sections}
+\end{figure}
+\clearpage
 
 
 \section{Use of Artificial Intelligence Assistants}
