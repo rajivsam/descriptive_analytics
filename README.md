@@ -9,6 +9,18 @@ Descriptive Analytics is looking at your historical business data to understand 
 This repository covers operational or analytical datasets that are relational. In particular, _Large Language Models_ are not part of any solution here. Solutions developed here utilize machine learning methods that have served the _knowledge discovery in databases_ for a long time.
 ## Examples
 Please review the case studies in the examples directory for details of specific case studies. 
+# Why should you bother with Descriptive Analytics?
+1. **Foundation for Advanced Analytics**: Descriptive analytics provides the groundwork for predictive and prescriptive analytics. Understanding historical data is crucial for building accurate models.
+2. **Informed Decision-Making**: By summarizing past data, businesses can make informed decisions based on trends and patterns rather than intuition alone.
+3. **Identifying Opportunities and Risks**: Descriptive analytics helps identify opportunities for growth and potential risks by analyzing historical performance.
+4. **Improved Customer Insights**: Understanding customer behavior through descriptive analytics can lead to better customer service and targeted marketing strategies.
+5. **Resource Optimization**: By analyzing past resource usage, businesses can optimize their operations and reduce costs.
+6. **Performance Measurement**: Descriptive analytics allows organizations to measure their performance against key metrics and benchmarks.
+7. **Data-Driven Culture**: Implementing descriptive analytics fosters a data-driven culture within organizations, encouraging employees to rely on data for decision-making.
+8. **Competitive Advantage**: Businesses that effectively utilize descriptive analytics can gain a competitive edge by understanding market trends and customer preferences better than their competitors.
+9. **Regulatory Compliance**: Descriptive analytics can help organizations ensure compliance with industry regulations by providing insights into historical data and trends.
+10. **Enhanced Reporting**: Descriptive analytics improves reporting capabilities, making it easier to communicate insights and findings to stakeholders.
+---
 ## 📝 Contributing
 
 Contributions are welcome!  
