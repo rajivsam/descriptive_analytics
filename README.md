@@ -17,9 +17,15 @@ Approaches and focus
 
 See the typical workflow for data preparation and analysis here: https://github.com/rajivsam/descriptive_analytics/blob/main/concept_discussion/operational_data_prep.md. For details on converting relational data to graphs, consult the relation-to-graph mapping document: https://github.com/rajivsam/descriptive_analytics/blob/main/examples/graph_from_relations/rel-to-graph-concepts.pdf
 ## What kind of use cases does this repository cover?
-This repository covers operational or analytical datasets that are relational. In particular, _Large Language Models_ are not part of any solution here. Solutions developed here utilize machine learning methods that have served the _knowledge discovery in databases_ for a long time.
+This repository covers operational or analytical datasets that are relational. In particular, _Large Language Models_ are not part of any solution here. Solutions developed here utilize machine learning methods that have served the _knowledge discovery in databases_ for a long time. 
 ## Examples
-Please review the case studies in the examples directory for details of specific case studies. 
+The following are common use cases for descriptive analytics:
+1. Traffic and Engagement Analysis: Analyzing website traffic data to understand user behavior, popular pages, and engagement metrics.
+2. Sales and Revenue Analysis: Summarizing sales data to identify top-selling products, seasonal trends, and revenue patterns.
+3. Customer Segmentation: Grouping customers based on purchasing behavior, demographics, or engagement levels.
+4. Financial Reporting: Creating summaries of financial data, such as profit and loss statements, balance
+5. Inventory Management: Analyzing inventory levels, turnover rates, and stock movement patterns.
+6. Social Media Analytics: Summarizing social media interactions, follower growth, and content performance
 
 ---
 ## 📝 Contributing
