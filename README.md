@@ -25,6 +25,15 @@ This repository covers operational or analytical datasets that are relational. I
 5. Inventory Management: Analyzing inventory levels, turnover rates, and stock movement patterns.
 6. Social Media Analytics: Summarizing social media interactions, follower growth, and content performance
 
+Explanatory models are commonly used for:
+1. Customer Churn Analysis: Identifying factors that contribute to customer attrition.
+2. Fraud Detection: Analyzing transaction patterns to identify unusual behavior indicative of fraud.
+3. Incident Analysis: Understanding the root causes of operational incidents or failures.
+4. Product Performance Analysis: Evaluating product features and their impact on sales or user satisfaction.
+5. Marketing Campaign Analysis: Assessing the effectiveness of marketing campaigns and identifying key drivers of success.
+6. User Behavior Analysis: Understanding how users interact with a product or service to improve user experience
+7. Risk Assessment: Evaluating factors that contribute to risk in various domains, such as credit risk or operational risk.
+
 ---
 ## 📝 Contributing
 
