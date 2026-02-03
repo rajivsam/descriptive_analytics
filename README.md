@@ -1,4 +1,4 @@
-![Header Image](https://github.com/rajivsam/descriptive_analytics/blob/main/images/analyst_reduced.jpeg)
+![Header Image](https://github.com/rajivsam/descriptive_analytics/blob/main/images/desc_analytics_infographic.png)
 # 📊 Descriptive Analytics Recipes
 
 Welcome to the **Descriptive Analytics Recipes** repository!  
@@ -12,10 +12,10 @@ Why it matters
 - Reduces risk by highlighting past failures and opportunities before they are repeated.
 
 Approaches and focus
-- Common techniques include summary statistics, time-series views, cohort analysis, and segmentation.
+- Determine the type of analysis your use case needs, is it cross-sectional, longitudinal or panel? The analysis approach and methods follow from which of these types of dataset your use case fits.
 - Graph-based modeling is particularly valuable for relational datasets: converting relations to graphs often uncovers connections and patterns that tabular analysis misses.
 
-See the typical workflow for data preparation and analysis here: https://github.com/rajivsam/descriptive_analytics/blob/main/concept_discussion/operational_data_prep.md. For details on converting relational data to graphs, consult the relation-to-graph mapping document: https://github.com/rajivsam/descriptive_analytics/blob/main/examples/graph_from_relations/rel-to-graph-concepts.pdf
+For an overview video, please see [this video](https://www.youtube.com/watch?v=MwXKC_oloH8)
 ## What kind of use cases does this repository cover?
 This repository covers operational or analytical datasets that are relational. In particular, _Large Language Models_ are not part of any solution here. Solutions developed here utilize machine learning methods that have served the _knowledge discovery in databases_ for a long time. The following are common use cases for descriptive analytics:
 1. Traffic and Engagement Analysis: Analyzing website traffic data to understand user behavior, popular pages, and engagement metrics.
