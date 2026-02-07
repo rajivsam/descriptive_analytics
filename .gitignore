@@ -9,6 +9,8 @@ descriptive_analytics_env/
 # Ignore directories that have raw in the name in the data directory
 data/olist_raw/
 data/sba_loans_data_raw/
+data/sba_loans_prepared/foia-7a-fy2020-present-as-of-251231.csv
+
 # pytest .hypothesis directory
 .hypothesis/
 # Ignore vscode settings

@@ -1,0 +1,5 @@
+## Overview
+SBA 7(a) loans provide up to \(\$5\) million in flexible, government-backed financing for for-profit small businesses to use for working capital, real estate, equipment, or acquisitions. As of July 2025, maximum interest rates are roughly \(13.5\%\)-\(14\%\) with repayment terms up to 25 years. These loans are ideal for startups or established businesses needing to finance growth with lower down payments. The SBA backs this financing and charges a gaurantee fee for doing this. 
+The SBA provides the loan repayment status on a regular basis. This can be analyzed to understand what types of loans tend to default (lead to charge off's) and what types of loans get paid off. The charge-off percentage is low, so there is an imbalance in the data.  A model that can be used to predict the probablity of a loan to default can be used to understand which loans, for example it may be loans that that the SBA has commited to financing, are at risk of defaulting. Since this dataset is imbalanced, balancing the false positive rate versus the false negative rate is important. 
+
+## Data Preparation

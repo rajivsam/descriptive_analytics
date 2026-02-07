@@ -33,3 +33,4 @@ kmds
 owlready2
 rdflib
 importlib-resources
+jupyter-ai
