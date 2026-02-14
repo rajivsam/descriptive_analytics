@@ -13,7 +13,8 @@ Why it matters
 
 Approaches and focus
 - Determine the type of analysis your use case needs, is it cross-sectional, longitudinal or panel? The analysis approach and methods follow from which of these types of dataset your use case fits.
-- Graph-based modeling is particularly valuable for relational datasets: converting relations to graphs often uncovers connections and patterns that tabular analysis misses.
+- Graph-based analysis can be a very powerful tool for descriptive analytics. Traditional machine learning approaches work can be sufficient for _Independent Identically Distributed_ data, when this is not a reasonable assumption, you need analysis methods that account for the dependencies in the data. Graph based analysis do this naturally. A lot of enterprise data reside in relational databases. A common first bottleneck in using graphs for descriptive analytics is related to getting the data from native relational format to a graph analysis model. For this reason, there is a complete section of this repository dedicated to transforming relational data to graphs. Please see [this video](https://www.youtube.com/watch?v=d997pgkwtGY&list=PL-lbroKJyNLDJ44l60GvHgcYtFh0pNFek&index=4&t=215s) for a summary of this process.
+
 
 For an overview video, please see [this video](https://www.youtube.com/watch?v=MwXKC_oloH8)
 ## What kind of use cases does this repository cover?
@@ -34,6 +35,7 @@ Explanatory models are commonly used for:
 6. User Behavior Analysis: Understanding how users interact with a product or service to improve user experience
 7. Risk Assessment: Evaluating factors that contribute to risk in various domains, such as credit risk or operational risk.
 
+For some samples, please see [this playlist](https://www.youtube.com/playlist?list=PL-lbroKJyNLDJ44l60GvHgcYtFh0pNFek)
 ---
 ## 📝 Contributing
 
