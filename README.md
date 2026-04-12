@@ -12,7 +12,8 @@ Why it matters
 - Reduces risk by highlighting past failures and opportunities before they are repeated.
 
 Approaches and focus
-- Determine the type of analysis your use case needs, is it cross-sectional, longitudinal or panel? The analysis approach and methods follow from which of these types of dataset your use case fits.
+- Determine the type of analysis your use case needs, is it cross-sectional, longitudinal or panel? The analysis approach and methods follow from which of these types of dataset your use case fits. For longitudinal analysis,see [tseda](https://github.com/rajivsam/tseda) — a package designed specifically for this use case. It provides tools for exploring and summarizing patterns in a single time series variable. For an overview of the package and what it offers, see the [tseda announcement blog post](https://rajivsam.github.io/r2ds-blog/posts/tseda%20announcement/). Examples and full details are available in the [tseda GitHub repository](https://github.com/rajivsam/tseda).
+
 - Graph-based analysis can be a very powerful tool for descriptive analytics. Traditional machine learning approaches work can be sufficient for _Independent Identically Distributed_ data, when this is not a reasonable assumption, you need analysis methods that account for the dependencies in the data. Graph based analysis do this naturally. A lot of enterprise data reside in relational databases. A common first bottleneck in using graphs for descriptive analytics is related to getting the data from native relational format to a graph analysis model. For this reason, there is a complete section of this repository dedicated to transforming relational data to graphs. Please see [this video](https://www.youtube.com/watch?v=d997pgkwtGY&list=PL-lbroKJyNLDJ44l60GvHgcYtFh0pNFek&index=4&t=215s) for a summary of this process.
 
 
@@ -37,10 +38,6 @@ Explanatory models are commonly used for:
 7. Risk Assessment: Evaluating factors that contribute to risk in various domains, such as credit risk or operational risk.
 
 
----
-## Univariate Time Series Descriptive Analytics
-
-For descriptive analytics on **univariate time series data**, see [tseda](https://github.com/rajivsam/tseda) — a companion package designed specifically for this use case. It provides tools for exploring and summarizing patterns in a single time series variable. For an overview of the package and what it offers, see the [tseda announcement blog post](https://rajivsam.github.io/r2ds-blog/posts/tseda%20announcement/). Examples and full details are available in the [tseda GitHub repository](https://github.com/rajivsam/tseda).
 
 ---
 ## 📝 Contributing
