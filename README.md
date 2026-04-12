@@ -38,6 +38,11 @@ Explanatory models are commonly used for:
 
 
 ---
+## Univariate Time Series Descriptive Analytics
+
+For descriptive analytics on **univariate time series data**, see [tseda](https://github.com/rajivsam/tseda) — a companion package designed specifically for this use case. It provides tools for exploring and summarizing patterns in a single time series variable. For an overview of the package and what it offers, see the [tseda announcement blog post](https://rajivsam.github.io/r2ds-blog/posts/tseda%20announcement/). Examples and full details are available in the [tseda GitHub repository](https://github.com/rajivsam/tseda).
+
+---
 ## 📝 Contributing
 
 Contributions are welcome!  
